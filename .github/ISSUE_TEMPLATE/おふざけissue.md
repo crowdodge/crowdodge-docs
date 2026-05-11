@@ -10,3 +10,6 @@ assignees: ''
 ## 何をするか
 
 ## 関連するissue
+
+- ブロックしているIssue:
+- ブロックされているIssue:
