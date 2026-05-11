@@ -11,5 +11,5 @@ assignees: ''
 
 ## 関連するissue
 
-- ブロックしているIssue:
 - ブロックされているIssue:
+- ブロックしているIssue:
