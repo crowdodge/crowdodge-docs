@@ -1,0 +1,9 @@
+name: Auto-add to project
+on:
+  issues:
+    types: [opened, transferred, reopened]
+
+jobs:
+  add:
+    uses: crowdodge/.github/.github/workflows/auto-add-to-project.yml@main
+    secrets: inherit
