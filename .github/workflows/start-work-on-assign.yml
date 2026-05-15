@@ -1,0 +1,12 @@
+name: Start work on assign
+on:
+  issues:
+    types: [assigned]
+
+jobs:
+  start-work:
+    uses: crowdodge/.github/.github/workflows/start-work-on-assign.yml@main
+    with:
+      base-branch: develop
+      branch-prefix: issue/
+    secrets: inherit
