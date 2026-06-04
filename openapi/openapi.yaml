@@ -1,0 +1,69 @@
+openapi: 3.1.1
+info:
+  title: Crowdodge API
+  version: 1.0.0
+  description: CrowdodgeのAPI
+
+# servers: # TODO: モックサーバは後で。
+# - url:
+
+tags:
+  - name: Auth
+  - name: Users
+  - name: Events
+  - name: Activities
+  - name: Plans
+  - name: Items
+  - name: Noises
+
+paths:
+  # auth
+  /auth/signup:
+    $ref: "./paths/auth@signup.yaml"
+  /auth/signin:
+    $ref: "./paths/auth@signin.yaml"
+  /auth/signout:
+    $ref: "./paths/auth@signout.yaml"
+  /auth/refresh:
+    $ref: "./paths/auth@refresh.yaml"
+
+  # users
+  /users/me/calendars: # GET 一覧取得（選択中かどうかはそれぞれのflag管理） # PUT 選択を変更
+    $ref: "./paths/users@me@calendars.yaml"
+  /users/me/subscription: # GET 契約中のサブスク # PUT 変更・更新（body: {planId: "xxx"で付与}）
+    $ref: "./paths/users@me@subscription.yaml"
+  /users/me/items: # GET 所持アイテム一覧
+    $ref: "./paths/users@me@items.yaml"
+  /users/me/items/{itemId}/uses: # POST 利用
+    $ref: "./paths/users@me@items@{itemId}@disputes.yaml"
+
+  # events
+  /events: # GET 三種の差分取得、クエリパラメータ（?calenderId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
+    $ref: "./paths/events.yaml"
+  /events/{eventId}: # PUT # DELETE
+    $ref: "./paths/events@{eventId}.yaml"
+
+  # activities
+  /activities: # GET # POST
+    $ref: "./paths/activities.yaml"
+
+  # subscription plans
+  /plans: # GET プラン一覧
+    $ref: "./paths/plans.yaml"
+
+  # items
+  /items: # GET 購入可能な課金アイテム一覧
+    $ref: "./paths/items.yaml"
+  /items/{itemId}/purchases: # POST 購入（body: {quantity: nで個数指定}）
+    $ref: "./paths/items@{itemsId}@purchases.yaml"
+
+  # noises
+  /noises: # GET 一覧
+    $ref: "./paths/noises.yaml"
+  /noises/{noiseId}/disputes: # POST 異議申し立て
+    $ref: "./paths/noises@{noiseId}@disputes.yaml"
+  /noises/{noiseId}/disputes/{disputeId}: # GET 申し立て確認 # DELETE 申し立て取り下げ
+    $ref: ./paths/noises@{noiseId}@disputes@{disputeId}.yaml"
+
+# components:
+#   securitySchemes:
