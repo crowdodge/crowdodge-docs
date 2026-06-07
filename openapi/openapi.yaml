@@ -18,10 +18,10 @@ tags:
 
 paths:
   # auth
-  /auth/signup:
-    $ref: "./paths/auth@signup.yaml"
-  /auth/signin:
-    $ref: "./paths/auth@signin.yaml"
+  /auth/google:
+    $ref: "./paths/auth@google@.yaml"
+  /auth/google/callback:
+    $ref: "./paths/auth@google@callback.yaml"
   /auth/signout:
     $ref: "./paths/auth@signout.yaml"
   /auth/refresh:
@@ -35,7 +35,7 @@ paths:
   /users/me/items: # GET 所持アイテム一覧
     $ref: "./paths/users@me@items.yaml"
   /users/me/items/{itemId}/uses: # POST 利用
-    $ref: "./paths/users@me@items@{itemId}@disputes.yaml"
+    $ref: "./paths/users@me@items@{itemId}@uses.yaml"
 
   # events
   /events: # GET 三種の差分取得、クエリパラメータ（?calenderId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
@@ -55,7 +55,7 @@ paths:
   /items: # GET 購入可能な課金アイテム一覧
     $ref: "./paths/items.yaml"
   /items/{itemId}/purchases: # POST 購入（body: {quantity: nで個数指定}）
-    $ref: "./paths/items@{itemsId}@purchases.yaml"
+    $ref: "./paths/items@{itemId}@purchases.yaml"
 
   # noises
   /noises: # GET 一覧
@@ -63,7 +63,7 @@ paths:
   /noises/{noiseId}/disputes: # POST 異議申し立て
     $ref: "./paths/noises@{noiseId}@disputes.yaml"
   /noises/{noiseId}/disputes/{disputeId}: # GET 申し立て確認 # DELETE 申し立て取り下げ
-    $ref: ./paths/noises@{noiseId}@disputes@{disputeId}.yaml"
+    $ref: "./paths/noises@{noiseId}@disputes@{disputeId}.yaml"
 
 # components:
 #   securitySchemes:
