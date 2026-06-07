@@ -1,0 +1,17 @@
+get:
+  tags:
+    - Users
+  summary: "カレンダー一覧取得"
+  description: |
+    所有しているカレンダーの一覧を取得。
+    それぞれのカレンダー要素が選択中かどうかのフラグを持つ。
+  operationId: listCalendars
+
+put:
+  tags:
+    - Users
+  summary: "洗濯中のカレンダー変更"
+  description: |
+    カレンダーの選択状態を変更する。
+    選択しなおしたいカレンダーIDのリストを送信することで、その状態で上書きする。
+  operationId: updateSelectedCalendars

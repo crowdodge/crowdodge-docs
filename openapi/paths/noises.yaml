@@ -1,0 +1,7 @@
+get:
+  tags:
+    - Noises
+  summary: "ノイズ一覧取得"
+  description: |
+    ノイズの一覧を取得する。
+  operationId: listNoises

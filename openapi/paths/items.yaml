@@ -1,0 +1,7 @@
+get:
+  tags:
+    - Items
+  summary: "購入可能な課金アイテム一覧の取得"
+  description: |
+    購入可能な課金アイテムの一覧を取得する。
+  operationId: listItems

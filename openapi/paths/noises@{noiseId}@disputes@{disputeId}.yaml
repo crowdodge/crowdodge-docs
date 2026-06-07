@@ -1,0 +1,15 @@
+get:
+  tags:
+    - Noises
+  summary: "異議申し立ての確認"
+  description: |
+    指定したノイズに対して行った異議申し立ての確認を行う。
+  operationId: getDisputes
+
+delete:
+  tags:
+    - Noises
+  summary: "異議申し立ての取り下げ"
+  description: |
+    指定したノイズに対して行った異議申し立てを取り下げる。
+  operationId: deleteDispute

@@ -1,0 +1,10 @@
+get:
+  tags:
+    - Auth
+  summary: "Google OAuth認証フロー"
+  description: |
+    Google OAuth認証フローを開始する。
+    クライアントがこのエンドポイントにアクセスすると、
+    GoogleのOAuth認証画面へのリダイレクト（302）を返す。
+    実際の登録とトークン発行は`/auth/google/callback`で行われる。
+  operationId: startGoogleOAuth

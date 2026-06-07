@@ -1,0 +1,15 @@
+put:
+  tags:
+    - Events
+  summary: "イベント更新"
+  description: |
+    指定したイベントの内容を更新する。
+  operationId: updateEvent
+
+delete:
+  tags:
+    - Events
+  summary: "イベント削除"
+  description: |
+    指定したイベントを削除する。
+  operationId: deleteEvent

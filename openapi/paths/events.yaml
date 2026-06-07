@@ -1,0 +1,22 @@
+get:
+  tags:
+    - Events
+  summary: "イベント差分取得"
+  description: |
+    3種類のデータとしてカレンダーのイベントを取得する。
+
+    1. Googleカレンダーの前回からの差分データ
+    2. 混雑情報
+    3. おすすめお店情報
+
+    クエパラ`calendarId`にコンマ区切りでカレンダーIDを指定することで、対象カレンダーを絞り込める。
+  operationId: listEvents
+
+post:
+  tags:
+    - Events
+  summary: "イベント新規作成"
+  description: |
+    新しいイベントを作成する。
+    不足部分はサーバサイドで補ってGoogleカレンダーに反映する。
+  operationId: createEvent

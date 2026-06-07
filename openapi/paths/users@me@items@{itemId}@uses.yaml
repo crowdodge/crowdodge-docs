@@ -1,0 +1,7 @@
+post:
+  tags:
+    - Users
+  summary: "アイテム使用"
+  description: |
+    ユーザが所持しているアイテムを消費。
+  operationId: useItems

@@ -1,0 +1,10 @@
+post:
+  tags:
+    - Auth
+  summary: "サインアウト"
+  description: |
+    リクエストに含まれるリフレッシュトークンをDBで無効化する。
+
+    ただし、アクセストークン（JWT）はstatelessのため即時無効化はできず、ゆうこ期限まで残る。
+    そのため、クライアント側での破棄を前提とする。
+  operationId: signout

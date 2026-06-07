@@ -1,0 +1,16 @@
+get:
+  tags:
+    - Users
+  summary: "契約中のサブスクリプション取得"
+  description: |
+    ユーザが現在契約しているサブスクリプションプランの除法を取得する。
+  operationId: getSubscription
+
+put:
+  tags:
+    - Users
+  summary: "サブスクリプションの新規開始・変更"
+  description: |
+    ユーザのサブスクリプションを新規開始または変更する。
+    リクエストボディとしてplanIdを指定する。
+  operationId: updateSubscription

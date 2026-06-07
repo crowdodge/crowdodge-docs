@@ -1,0 +1,15 @@
+get:
+  tags:
+    - Activities
+  summary: "行動履歴取得"
+  description: |
+    行動履歴を取得する。
+  operationId: getActivity
+
+post:
+  tags:
+    - Activities
+  summary: "行動遍歴送信"
+  description: |
+    予定遂行後に、その行動を送信する。
+  operationId: createActivity
