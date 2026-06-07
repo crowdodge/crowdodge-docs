@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "./.vscode/schemas/paths.json": "paths/*.yaml"
+    }
+}
