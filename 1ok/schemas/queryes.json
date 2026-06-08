@@ -1,0 +1,17 @@
+{
+    "allOf": [
+        {
+            "$ref": "./openapi-3.1-2025-09-15-schema.json#/$defs/parameter"
+        }
+    ],
+    "properties": {
+        "in": {
+            "const": "query"
+        }
+    },
+    "required": [
+        "name",
+        "in",
+        "schema"
+    ]
+}

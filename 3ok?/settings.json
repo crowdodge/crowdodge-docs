@@ -1,0 +1,7 @@
+{
+    "yaml.schemas": {
+        "./.vscode/schemas/paths.json": "openapi/paths/**/*.yaml",
+        "./.vscode/schemas/path-params.json": "openapi/components/parameters/paths/**/*.yaml",
+        "./.vscode/schemas/query-params.json": "openapi/components/parameters/queries/**/*.yaml"
+    }
+}
