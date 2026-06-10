@@ -11,6 +11,8 @@ get:
 
     クエパラ`calendarId`にコンマ区切りでカレンダーIDを指定することで、対象カレンダーを絞り込める。
   operationId: listEvents
+  parameters:
+    - $ref: "../components/parameters/queries/CalendarId.yaml"
 
 post:
   tags:
