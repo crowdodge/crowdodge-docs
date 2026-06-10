@@ -5,3 +5,5 @@ post:
   description: |
     ユーザが所持しているアイテムを消費。
   operationId: useItems
+  parameters:
+    - $ref: "../components/parameters/paths/ItemId.yaml"

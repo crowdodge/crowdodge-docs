@@ -5,6 +5,8 @@ put:
   description: |
     指定したイベントの内容を更新する。
   operationId: updateEvent
+  parameters:
+    - $ref: "../components/parameters/paths/EventId.yaml"
 
 delete:
   tags:
@@ -13,3 +15,5 @@ delete:
   description: |
     指定したイベントを削除する。
   operationId: deleteEvent
+  parameters:
+    - $ref: "../components/parameters/paths/EventId.yaml"

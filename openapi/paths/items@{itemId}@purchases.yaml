@@ -6,3 +6,5 @@ post:
     指定したアイテムを購入する。
     リクエストボディのquantityで購入個数を指定する。
   operationId: purchaseItems
+  parameters:
+    - $ref: "../components/parameters/paths/ItemId.yaml"

@@ -1,5 +1,5 @@
-name: eventId
+name: disputeId
 in: path
+required: true
 schema:
   type: string
-required: true

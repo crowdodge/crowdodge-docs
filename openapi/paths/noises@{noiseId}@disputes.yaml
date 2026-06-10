@@ -7,3 +7,5 @@ post:
     TODO: 行動履歴の形式によるところがあるので詳細不明。
     TODO: 行動履歴の一部情報を修正するためのテキストか？
   operationId: submitActivityCorrection
+  parameters:
+    - $ref: "../components/parameters/paths/NoiseId.yaml"

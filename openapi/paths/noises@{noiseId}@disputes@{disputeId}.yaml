@@ -5,6 +5,9 @@ get:
   description: |
     指定したノイズに対して行った異議申し立ての確認を行う。
   operationId: getDisputes
+  parameters:
+    - $ref: "../components/parameters/paths/NoiseId.yaml"
+    - $ref: "../components/parameters/paths/DisputeId.yaml"
 
 delete:
   tags:
@@ -13,3 +16,6 @@ delete:
   description: |
     指定したノイズに対して行った異議申し立てを取り下げる。
   operationId: deleteDispute
+  parameters:
+    - $ref: "../components/parameters/paths/NoiseId.yaml"
+    - $ref: "../components/parameters/paths/DisputeId.yaml"

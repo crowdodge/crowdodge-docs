@@ -1,5 +1,5 @@
-name: eventId
+name: noiseId
 in: path
 schema:
-  type: string
+  type: "string"
 required: true
