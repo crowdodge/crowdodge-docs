@@ -1,57 +1,18 @@
-// {
-//     "yaml.schemas": {
-//         "./.vscode/schemas/openapi-3.1-2025-09-15-schema.json": "openapi/openapi.yaml",
-//         "./.vscode/schemas/paths.json": [
-//             "openapi/paths/*.yaml",
-//             // "openapi/paths/**/*.yaml"
-//         ],
-//         "./.vscode/schemas/path-params.json": [
-//             "openapi/components/parameters/paths-aaaa/*.yaml",
-//             // "openapi/components/parameters/paths-aaaa/**/*.yaml"
-//         ],
-//         "./.vscode/schemas/query-params.json": [
-//             "openapi/components/parameters/queries/*.yaml",
-//             // "openapi/components/parameters/queries/**/*.yaml"
-//         ]
-//     }
-// }
-// {
-//     "yaml.trace.server": "verbose",
-//     "yaml.schemas": {
-//         "./.vscode/schemas/path-params.json": [
-//             "openapi/components/parameters/paths-aaaa/*.yaml",
-//             "openapi/components/parameters/queries/*.yaml",
-//             "openapi/paths/*.yaml"
-//         ]
-//     }
-// }
-// {
-//     "yaml.trace.server": "verbose",
-//     "yaml.schemas": {
-//         "./.vscode/schemas/openapi-3.1-2025-09-15-schema.json": "openapi/openapi.yaml",
-//         "./.vscode/schemas/paths.json": "openapi/paths/*.yaml",
-//         "./.vscode/schemas/path-params.json": "openapi/components/parameters/paths-aaaa/*.yaml",
-//         "./.vscode/schemas/query-params.json": "openapi/components/parameters/queries/*.yaml",
-//     }
-// }
 {
     "yaml.trace.server": "verbose",
     "yaml.schemas": {
         "./.vscode/schemas/openapi-3.1-2025-09-15-schema.json": "openapi/openapi.yaml",
         "./.vscode/schemas/paths.json": [
-            "openapi/paths/*.yaml",
             "openapi/paths/**/*.yaml"
         ],
         "./.vscode/schemas/params.json": [
             "openapi/components/parameters/*.yaml",
         ],
         "./.vscode/schemas/path-params.json": [
-            "openapi/components/parameters/paths/*.yaml",
-            // "openapi/components/parameters/paths/**/*.yaml"
+            "openapi/components/parameters/paths/**/*.yaml"
         ],
         "./.vscode/schemas/query-params.json": [
-            "openapi/components/parameters/queries/*.yaml",
-            // "openapi/components/parameters/queries/**/*.yaml"
+            "openapi/components/parameters/queries/**/*.yaml"
         ]
     }
 }
