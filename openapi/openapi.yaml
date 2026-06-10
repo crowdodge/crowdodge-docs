@@ -1,20 +1,46 @@
 openapi: 3.1.1
 info:
-  title: Crowdodge API
+  title: "Crowdodge API"
   version: 1.0.0
   description: CrowdodgeのAPI
+  license:
+    name: UNLICENSED
+    url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-json#license"
 
-# servers: # TODO: モックサーバは後で。
-# - url:
+servers:
+  - url: "http://api.crowdodge.com/v1"
+    description: Production # NOTE: 将来用であり、今はダミー。リンターを黙らせるのに必要。
+  - url: "{protocol}://{host}:{port}"
+    description: Local development # TODO: モックサーバは後で。
+    variables:
+      protocol:
+        description: プロトコル
+        default: http
+        enum:
+          - "http"
+          - "https"
+      host:
+        description: 各自のホスト名
+        default: "localhost"
+      port:
+        description: 各自のポート番号
+        default: "8080"
 
 tags:
   - name: Auth
+    description: 認証・認可に関するエンドポイント群
   - name: Users
+    description: ユーザ情報に関する操作エンドポイント群
   - name: Events
+    description: イベントに関する操作エンドポイント群
   - name: Activities
+    description: 行動履歴に関する操作エンドポイント群
   - name: Plans
+    description: サブスクリプションプランに関する操作エンドポイント群
   - name: Items
+    description: 課金アイテムに関する操作エンドポイント群
   - name: Noises
+    description: ノイズデータに関する操作エンドポイント群
 
 paths:
   # auth
@@ -65,5 +91,13 @@ paths:
   /noises/{noiseId}/disputes/{disputeId}: # GET 申し立て確認 # DELETE 申し立て取り下げ
     $ref: "./paths/noises@{noiseId}@disputes@{disputeId}.yaml"
 
-# components:
-#   securitySchemes:
+# TODO: 仮
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []

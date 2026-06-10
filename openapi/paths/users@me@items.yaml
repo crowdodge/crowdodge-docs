@@ -4,4 +4,4 @@ get:
   summary: "所持アイテム一覧取得"
   description: |
     ユーザが所持しているアイテム一覧を取得する。
-  operationId: listItems
+  operationId: listUserItems
