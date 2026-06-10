@@ -1,19 +1,87 @@
 {
-    "allOf": [
-        {
-            "$ref": "https://spec.openapis.org/oas/3.1/schema/2025-09-15#/$defs/parameter"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
         },
-        {
-            "properties": {
-                "in": {
-                    "const": "query"
-                }
+        "in": {
+            "const": "query"
+        },
+        "description": {
+            "type": "string"
+        },
+        "required": {
+            "default": false,
+            "type": "boolean"
+        },
+        "deprecated": {
+            "default": false,
+            "type": "boolean"
+        },
+        "schema": {
+            "$comment": "$dynamicRef: #meta"
+        },
+        "content": {
+            "type": "object",
+            "additionalProperties": {
+                "$comment": "$ref: #/$defs/media-type",
+                "type": "object"
             },
+            "propertyNames": {
+                "format": "media-range"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+        },
+        "allowReserved": {
+            "default": false,
+            "type": "boolean"
+        }
+    },
+    "required": [
+        "name",
+        "in"
+    ],
+    "oneOf": [
+        {
             "required": [
-                "name",
-                "in",
                 "schema"
             ]
+        },
+        {
+            "required": [
+                "content"
+            ]
         }
-    ]
+    ],
+    "dependentSchemas": {
+        "schema": {
+            "properties": {
+                "style": {
+                    "type": "string",
+                    "default": "form",
+                    "enum": [
+                        "form",
+                        "spaceDelimited",
+                        "pipeDelimited",
+                        "deepObject"
+                    ]
+                },
+                "explode": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "$ref": "#/$defs/specification-extensions",
+    "unevaluatedProperties": false,
+    "$defs": {
+        "specification-extensions": {
+            "$comment": "https://spec.openapis.org/oas/v3.1#specification-extensions",
+            "patternProperties": {
+                "^x-": true
+            }
+        }
+    }
 }

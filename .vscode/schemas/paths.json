@@ -1,3 +1,114 @@
 {
-    "$ref": "https://spec.openapis.org/oas/3.1/schema/2025-09-15#/$defs/path-item"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "get": {
+            "$ref": "#/$defs/operation"
+        },
+        "put": {
+            "$ref": "#/$defs/operation"
+        },
+        "post": {
+            "$ref": "#/$defs/operation"
+        },
+        "delete": {
+            "$ref": "#/$defs/operation"
+        },
+        "options": {
+            "$ref": "#/$defs/operation"
+        },
+        "head": {
+            "$ref": "#/$defs/operation"
+        },
+        "patch": {
+            "$ref": "#/$defs/operation"
+        },
+        "trace": {
+            "$ref": "#/$defs/operation"
+        }
+    },
+    "$defs": {
+        "operation": {
+            "$comment": "$defsはobjectとして簡易的に扱っているため、切り出し先で行うか、openapi/openapi.yamlで補完を当てること。",
+            "type": "object",
+            "properties": {
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "summary": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "externalDocs": {
+                    "$comment": "$ref: #/$defs/external-documentation",
+                    "type": "object"
+                },
+                "operationId": {
+                    "type": "string"
+                },
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$comment": "$ref: #/$defs/parameter-or-reference",
+                        "type": "object"
+                    }
+                },
+                "requestBody": {
+                    "$comment": "$ref: #/$defs/request-body-or-reference",
+                    "type": "object"
+                },
+                "responses": {
+                    "$comment": "$ref: #/$defs/responses",
+                    "type": "object"
+                },
+                "callbacks": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$comment": "$ref: #/$defs/callbacks-or-reference",
+                        "type": "object"
+                    }
+                },
+                "deprecated": {
+                    "default": false,
+                    "type": "boolean"
+                },
+                "security": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/security-requirement"
+                    }
+                },
+                "servers": {
+                    "type": "array",
+                    "items": {
+                        "$comment": "$ref: #/$defs/server",
+                        "type": "object"
+                    }
+                }
+            },
+            "$ref": "#/$defs/specification-extensions",
+            "unevaluatedProperties": false
+        },
+        "security-requirement": {
+            "$comment": "https://spec.openapis.org/oas/v3.1#security-requirement-object",
+            "type": "object",
+            "additionalProperties": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "specification-extensions": {
+            "$comment": "https://spec.openapis.org/oas/v3.1#specification-extensions",
+            "patternProperties": {
+                "^x-": true
+            }
+        }
+    }
 }
