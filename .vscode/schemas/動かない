@@ -1,0 +1,57 @@
+// path-params.json
+
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+        "path-params": {
+            "allOf": [
+                {
+                    "$ref": "./openapi-3.1-2025-09-15-schema.json#/$defs/parameter"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "in": {
+                            "const": "path"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "$ref": "#/$defs/path-params"
+}
+
+// paths.json
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+        "paths": {
+            "$ref": "./openapi-3.1-2025-09-15-schema.json#/$defs/path-item"
+        }
+    },
+    "$ref": "#/$defs/paths"
+}
+
+// query-params.json
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$defs": {
+        "query-params": {
+            "allOf": [
+                {
+                    "$ref": "./openapi-3.1-2025-09-15-schema.json#/$defs/parameter"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "in": {
+                            "const": "query"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "$ref": "#/$defs/query-params"
+}
