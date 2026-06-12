@@ -5,3 +5,4 @@ get:
   description: |
     利用可能なサブスクリプションプランの一覧を取得する。
   operationId: listPlans
+  security: []
