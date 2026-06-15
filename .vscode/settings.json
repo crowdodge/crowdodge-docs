@@ -8,6 +8,7 @@
             "openapi/components/parameters/**/*.yaml",
         ],
         "./.vscode/schemas/schemas-object.json": "openapi/components/schemas/*.yaml",
-        "./.vscode/schemas/reses.json": "openapi/components/responses/**/*.yaml"
+        "./.vscode/schemas/reses.json": "openapi/components/responses/**/*.yaml",
+        "./.vscode/schemas/reqs.json": "openapi/components/requestBodies/**/*.yaml"
     }
 }
