@@ -15,14 +15,15 @@
 |---|---|---|
 | 1 | users | ユーザーのアカウント基本情報 |
 | 2 | user_settings | ユーザーのリマインドタイミング等の設定 |
-| 3 | user_calendars | 使用する Google カレンダーと同期状態の管理 |
-| 4 | user_subscriptions | サブスクリプション登録状況（RevenueCat 参照） |
-| 5 | user_devices | 通知対象デバイスの識別子（FCM）管理 |
-| 6 | events | 個別の予定（Google カレンダーの投影） |
-| 7 | event_destinations | 予定の目的地・ルート情報（シリーズ単位で共有） |
-| 8 | event_destination_links | 予定と目的地グループのメンバーシップ |
-| 9 | event_congestion_predictions | 予定の混雑予測 |
-| 10 | notification_schedules | 通知タイミングの管理（サーバ常時監視） |
+| 3 | user_calendars | ユーザーが混雑回避の対象に選択した Google カレンダー |
+| 4 | event_calendar_syncs | Google カレンダー取り込みの同期・watch 状態（user_calendars と 1:1） |
+| 5 | user_subscriptions | サブスクリプション登録状況（RevenueCat 参照） |
+| 6 | user_devices | 通知対象デバイスの識別子（FCM）管理 |
+| 7 | events | 個別の予定（Google カレンダーの投影） |
+| 8 | event_destinations | 予定の目的地・ルート情報（シリーズ単位で共有） |
+| 9 | event_destination_links | 予定と目的地グループのメンバーシップ |
+| 10 | event_congestion_predictions | 予定の混雑予測 |
+| 11 | notification_schedules | 通知タイミングの管理（サーバ常時監視） |
 
 ---
 
@@ -46,24 +47,38 @@
 | created_at | timestamp | | ● | | |
 | updated_at | timestamp | | ● | | |
 
-## 3. user_calendars — 使用カレンダーと同期状態
+## 3. user_calendars — 選択カレンダー
 
-| 列(物理) | データ型 | PK | NOT NULL | 参照 | 備考 |
-|---|---|---|---|---|---|
-| user_calendar_uuid | uuid | ● | ● | | ユーザーカレンダーID |
-| user_uuid | uuid | | ● | users.user_uuid | ユーザーID |
-| google_calendar_id | text | | ● | | Google カレンダーID |
-| sync_token | text | | | | サーバ用増分同期トークン |
-| materialized_until | timestamp | | | | ローリング窓で実体化済みの将来端 |
-| last_full_sync_at | timestamp | | | | 窓送り全同期の最終時刻 |
-| last_incremental_sync_at | timestamp | | | | 増分同期の最終時刻 |
-| watch_channel_id | text | | | | Google Push チャンネルID |
-| watch_resource_id | text | | | | watch 対象リソースID |
-| watch_expiration | timestamp | | | | watch チャンネル失効時刻 |
-| created_at | timestamp | | ● | | |
-| updated_at | timestamp | | ● | | |
+ユーザーが混雑回避の対象に選択した Google カレンダー。同期・watch 状態は `event_calendar_syncs` が保持する。
 
-## 4. user_subscriptions — サブスクリプション
+| 列(物理) | データ型 | PK | NOT NULL | 一意 | 参照 | 備考 |
+|---|---|---|---|---|---|---|
+| user_calendar_uuid | uuid | ● | ● | | | ユーザーカレンダーID |
+| user_uuid | uuid | | ● | | users.user_uuid | ユーザーID |
+| google_calendar_id | text | | ● | | | Google カレンダーID |
+| created_at | timestamp | | ● | | | |
+| updated_at | timestamp | | ● | | | |
+
+- `UNIQUE(user_uuid, google_calendar_id)`: 同一ユーザーが同一カレンダーを重複登録しない。1ユーザー複数カレンダー・共有カレンダーの複数ユーザー登録はいずれも許容する。
+
+## 4. event_calendar_syncs — カレンダー同期・watch 状態
+
+Google カレンダーを `events` 投影へ取り込むための同期・watch 状態。`user_calendars` と 1:1。取り込み手順は [google-calendar-sync.md](google-calendar-sync.md) §5。
+
+| 列(物理) | データ型 | PK | NOT NULL | 一意 | 参照 | 備考 |
+|---|---|---|---|---|---|---|
+| user_calendar_uuid | uuid | ● | ● | | user_calendars.user_calendar_uuid | 由来カレンダー（下流→上流参照） |
+| materialized_until | timestamptz | | | | | ローリング窓で実体化済みの将来端（不在削除の境界） |
+| watch_channel_id | text | | | ● | | Google Push チャンネルID（webhook ルーティング） |
+| watch_resource_id | text | | | | | watch 対象リソースID（channels.stop に使用） |
+| watch_channel_token | text | | | | | webhook 検証トークン（X-Goog-Channel-Token の照合用） |
+| watch_expiration | timestamptz | | | | | watch チャンネル失効時刻（renew sweep 用・index） |
+| created_at | timestamp | | ● | | | |
+| updated_at | timestamp | | ● | | | |
+
+- `watch_expiration` に index（renew 抽出用）。
+
+## 5. user_subscriptions — サブスクリプション
 
 | 列(物理) | データ型 | PK | NOT NULL | 参照 | 備考 |
 |---|---|---|---|---|---|
@@ -76,7 +91,7 @@
 | created_at | timestamp | | ● | | |
 | updated_at | timestamp | | ● | | |
 
-## 5. user_devices — 通知デバイス
+## 6. user_devices — 通知デバイス
 
 | 列(物理) | データ型 | PK | NOT NULL | 参照 | 備考 |
 |---|---|---|---|---|---|
@@ -86,7 +101,7 @@
 | created_at | timestamp | | ● | | |
 | updated_at | timestamp | | ● | | |
 
-## 6. events — 個別の予定（Google カレンダーの投影）
+## 7. events — 個別の予定（Google カレンダーの投影）
 
 自社ドメイン（混雑予測・目的地推定・リマインド・通知本文）が消費するフィールドのみを保持する。表示専用フィールド（色・参加者・公開範囲等）は保持しない。
 
@@ -108,7 +123,7 @@
 | created_at | timestamp | | ● | | | |
 | updated_at | timestamp | | ● | | | |
 
-## 7. event_destinations — 目的地・ルート情報
+## 8. event_destinations — 目的地・ルート情報
 
 目的地は場所に紐づき日付に依存しない。同一シリーズの全発生回で1グループを共有する（`recurring_event_id` を相関ヒントとして重複を防ぐ）。
 
@@ -123,7 +138,7 @@
 | created_at | timestamp | | ● | | |
 | updated_at | timestamp | | ● | | |
 
-## 8. event_destination_links — 予定↔目的地グループ
+## 9. event_destination_links — 予定↔目的地グループ
 
 | 列(物理) | データ型 | PK | NOT NULL | 参照 | 備考 |
 |---|---|---|---|---|---|
@@ -131,7 +146,7 @@
 | event_destination_uuid | uuid | | ● | event_destinations.event_destination_uuid | 所属グループ |
 | created_at | timestamp | | ● | | |
 
-## 9. event_congestion_predictions — 混雑予測
+## 10. event_congestion_predictions — 混雑予測
 
 1予定につき1行（再予測は上書き）。
 
@@ -145,7 +160,7 @@
 | created_at | timestamp | | ● | | | |
 | updated_at | timestamp | | ● | | | |
 
-## 10. notification_schedules — 通知スケジュール
+## 11. notification_schedules — 通知スケジュール
 
 通知ジョブのキュー。サーバが常時ポーリングし、`notificate_time` 到来分を発火する。
 
