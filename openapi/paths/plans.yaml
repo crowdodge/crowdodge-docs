@@ -6,3 +6,6 @@ get:
     利用可能なサブスクリプションプランの一覧を取得する。
   operationId: listPlans
   security: []
+  responses:
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

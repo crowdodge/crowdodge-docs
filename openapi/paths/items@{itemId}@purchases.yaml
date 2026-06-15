@@ -8,3 +8,16 @@ post:
   operationId: purchaseItems
   parameters:
     - $ref: "../components/parameters/paths/ItemId.yaml"
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml" # 処理時に問題が発生した
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # リクエスト開始時点でロジック的に不正（すでに販売終了など）
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

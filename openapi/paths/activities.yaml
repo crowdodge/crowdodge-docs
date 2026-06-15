@@ -5,6 +5,11 @@ get:
   description: |
     行動履歴を取得する。
   operationId: getActivity
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
 
 post:
   tags:
@@ -13,3 +18,10 @@ post:
   description: |
     予定遂行後に、その行動を送信する。
   operationId: createActivity
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

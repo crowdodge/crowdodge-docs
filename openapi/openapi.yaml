@@ -50,8 +50,8 @@ paths:
     $ref: "./paths/auth@google@callback.yaml"
   /auth/signout:
     $ref: "./paths/auth@signout.yaml"
-  /auth/refresh:
-    $ref: "./paths/auth@refresh.yaml"
+  /auth/refresh/mobile:
+    $ref: "./paths/auth@refresh@mobile.yaml"
 
   # users
   /users/me/calendars: # GET 一覧取得（選択中かどうかはそれぞれのflag管理） # PUT 選択を変更

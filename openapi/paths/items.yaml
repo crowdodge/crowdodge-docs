@@ -5,3 +5,7 @@ get:
   description: |
     購入可能な課金アイテムの一覧を取得する。
   operationId: listItems
+  security: []
+  responses:
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

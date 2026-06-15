@@ -7,3 +7,14 @@ post:
   operationId: useItems
   parameters:
     - $ref: "../components/parameters/paths/ItemId.yaml"
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml"
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # アイテムは存在するが、期限切れや対象が存在しないなど
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

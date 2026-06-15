@@ -8,6 +8,13 @@ get:
   parameters:
     - $ref: "../components/parameters/paths/NoiseId.yaml"
     - $ref: "../components/parameters/paths/DisputeId.yaml"
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
 
 delete:
   tags:
@@ -19,3 +26,12 @@ delete:
   parameters:
     - $ref: "../components/parameters/paths/NoiseId.yaml"
     - $ref: "../components/parameters/paths/DisputeId.yaml"
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

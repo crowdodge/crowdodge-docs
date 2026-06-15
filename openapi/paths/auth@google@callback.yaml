@@ -14,3 +14,11 @@ get:
     4. 初回の場合はDBに新規ユーザとして登録
     5. 自前のトークンを発行してクライアントに返す
   operationId: handleGoogleOAuthCallback
+  security: []
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "422":
+      $ref: "../components/responses/errors/422.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

@@ -5,14 +5,21 @@ get:
   description: |
     3種類のデータとしてカレンダーのイベントを取得する。
 
-    1. Googleカレンダーの前回からの差分データ
-    2. 混雑情報
-    3. おすすめお店情報
+    1. 以下のGoogleカレンダーの前回からの差分データ（リクエストした日付から、サーバが持ってる分全て取る）
+    2. 混雑情報（リクエストした日付から、サーバが持ってる分全て取る）
+    3. おすすめお店情報（リクエストした日付から、サーバが持ってる分全て取る）
 
     クエパラ`calendarId`にコンマ区切りでカレンダーIDを指定することで、対象カレンダーを絞り込める。
   operationId: listEvents
   parameters:
     - $ref: "../components/parameters/queries/CalendarId.yaml"
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
 
 post:
   tags:
@@ -22,3 +29,12 @@ post:
     新しいイベントを作成する。
     不足部分はサーバサイドで補ってGoogleカレンダーに反映する。
   operationId: createEvent
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # 時刻の前後不整合など
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

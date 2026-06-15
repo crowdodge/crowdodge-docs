@@ -1,3 +1,6 @@
+# mobileのみ前提。
+# 将来Webクライアントが増えた場合、/auth/refresh/webを生やす。
+
 post:
   tags:
     - Auth
@@ -15,10 +18,18 @@ post:
     クライアントのフローとしては、
 
     1. jwtのexpを確認
-    2. 起源切れまたは直近なら、
+    2. 期限切れまたは直近なら、
       1. refreshを叩いてjwt更新し、リクエスト
       2. 401が返った場合は、ログアウトして要認証
     3. そうでない場合は、
       1. そのままjwtを利用してリクエスト
       2. 401が返った場合は、refreshを叩いてjwt更新し、リクエスト
   operationId: refreshToken
+  security: []
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml" # refreshエンドポイントに関しては、access tokenのエラーではなくrefresh tokenエラー。
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

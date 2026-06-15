@@ -6,12 +6,28 @@ get:
     所有しているカレンダーの一覧を取得。
     それぞれのカレンダー要素が選択中かどうかのフラグを持つ。
   operationId: listCalendars
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
 
 put:
   tags:
     - Users
-  summary: "洗濯中のカレンダー変更"
+  summary: "選択中のカレンダー変更"
   description: |
     カレンダーの選択状態を変更する。
     選択しなおしたいカレンダーIDのリストを送信することで、その状態で上書きする。
   operationId: updateSelectedCalendars
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml" # フリープランはカレンダー選択1つまで
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # 不正なカレンダーなど
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

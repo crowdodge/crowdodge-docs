@@ -5,6 +5,11 @@ post:
   description: |
     リクエストに含まれるリフレッシュトークンをDBで無効化する。
 
-    ただし、アクセストークン（JWT）はstatelessのため即時無効化はできず、ゆうこ期限まで残る。
+    ただし、アクセストークン（JWT）はstatelessのため即時無効化はできず、有効期限まで残る。
     そのため、クライアント側での破棄を前提とする。
   operationId: signout
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

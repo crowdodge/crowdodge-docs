@@ -8,3 +8,7 @@ get:
     GoogleのOAuth認証画面へのリダイレクト（302）を返す。
     実際の登録とトークン発行は`/auth/google/callback`で行われる。
   operationId: startGoogleOAuth
+  security: []
+  responses:
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

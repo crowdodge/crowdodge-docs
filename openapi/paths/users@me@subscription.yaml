@@ -5,6 +5,11 @@ get:
   description: |
     ユーザが現在契約しているサブスクリプションプランの除法を取得する。
   operationId: getSubscription
+  responses:
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
 
 put:
   tags:
@@ -14,3 +19,14 @@ put:
     ユーザのサブスクリプションを新規開始または変更する。
     リクエストボディとしてplanIdを指定する。
   operationId: updateSubscription
+  responses:
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml"
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # 不正なプランなど
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
