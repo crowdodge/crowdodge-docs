@@ -29,6 +29,12 @@ post:
     新しいイベントを作成する。
     不足部分はサーバサイドで補ってGoogleカレンダーに反映する。
   operationId: createEvent
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requests/EventRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

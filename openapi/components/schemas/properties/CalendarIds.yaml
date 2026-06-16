@@ -1,0 +1,6 @@
+type: array
+items:
+  type: string
+description: カレンダーIDのリスト
+examples:
+  - ["id1", "id2"]

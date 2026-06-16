@@ -18,6 +18,7 @@ post:
   description: |
     予定遂行後に、その行動を送信する。
   operationId: createActivity
+  # TODO: requestBody:
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

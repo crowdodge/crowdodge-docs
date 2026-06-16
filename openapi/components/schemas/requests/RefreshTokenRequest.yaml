@@ -1,0 +1,6 @@
+type: object
+required:
+  - refreshToken
+properties:
+  refreshToken:
+    $ref: "../properties/RefreshToken.yaml"

@@ -19,6 +19,12 @@ put:
     ユーザのサブスクリプションを新規開始または変更する。
     リクエストボディとしてplanIdを指定する。
   operationId: updateSubscription
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requests/PlanIdRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

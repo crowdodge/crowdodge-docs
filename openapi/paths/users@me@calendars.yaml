@@ -4,7 +4,7 @@ get:
   summary: "カレンダー一覧取得"
   description: |
     所有しているカレンダーの一覧を取得。
-    それぞれのカレンダー要素が選択中かどうかのフラグを持つ。
+    それぞれのカレンダー要素が、id, 名前, 選択中かどうかのフラグを持つ。
   operationId: listCalendars
   responses:
     "401":
@@ -20,6 +20,12 @@ put:
     カレンダーの選択状態を変更する。
     選択しなおしたいカレンダーIDのリストを送信することで、その状態で上書きする。
   operationId: updateSelectedCalendars
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requests/CalendarIdsRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

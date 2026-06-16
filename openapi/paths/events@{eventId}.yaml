@@ -7,6 +7,12 @@ put:
   operationId: updateEvent
   parameters:
     - $ref: "../components/parameters/paths/EventId.yaml"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requests/EventRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

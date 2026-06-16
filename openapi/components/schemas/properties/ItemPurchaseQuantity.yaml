@@ -1,0 +1,6 @@
+type: integer
+description: 数量
+minimum: 1
+examples:
+  - 1
+  - 3

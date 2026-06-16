@@ -26,6 +26,12 @@ post:
       2. 401が返った場合は、refreshを叩いてjwt更新し、リクエスト
   operationId: refreshToken
   security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requests/RefreshTokenRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

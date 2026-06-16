@@ -8,6 +8,12 @@ post:
   operationId: purchaseItems
   parameters:
     - $ref: "../components/parameters/paths/ItemId.yaml"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requests/ItemPurchaseQuantityRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"
