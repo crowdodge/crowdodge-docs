@@ -1,0 +1,50 @@
+type: object
+required:
+  - title
+  - allDay
+  - startAt
+  - endAt
+  - calendarId
+properties:
+  title:
+    type: string
+    description: イベントのタイトル
+    minLength: 1
+    examples:
+      - "散髪"
+  allDay:
+    type: boolean
+    description: |
+      終日フラグ。
+      trueの場合にstartAt, endAtの時刻部分はサーバ側で無視される。
+    examples:
+      - false
+  startAt:
+    type: string
+    format: date-time
+    description: 開始日時
+    examples:
+      - "2026-06-15T13:20:00+09:00"
+  endAt:
+    type: string
+    format: data-time
+    description: 終了日時
+    examples:
+      - "2026-06-15T15:00:00+09:00"
+  calendarId:
+    type: string
+    description: 対象のカレンダーID
+    examples:
+      - "id"
+  tagColor:
+    $ref: "../enums/EventColor.yaml"
+  location:
+    type: string
+    description: 場所
+    examples:
+      - "なんばOIOI"
+  memo:
+    type: string
+    description: イベントのメモ
+    examples:
+      - "細かい情報はメール"
