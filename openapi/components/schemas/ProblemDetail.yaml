@@ -30,7 +30,7 @@ properties:
     description: |
       機械的なハンドリング用のエラーコード。
       フロントエンドはこのフィールドで分岐する。
-      大文字スネークケース。ｓ
+      大文字スネークケース。
     examples:
       - "EVENT_NOT_FOUND"
   detail:
