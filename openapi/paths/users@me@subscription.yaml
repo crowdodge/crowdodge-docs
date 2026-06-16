@@ -24,7 +24,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: "../components/schemas/requests/PlanIdRequest.yaml"
+          $ref: "../components/schemas/requestBodies/PlanIdRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

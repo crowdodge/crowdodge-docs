@@ -13,7 +13,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../components/schemas/requests/ItemPurchaseQuantityRequest.yaml"
+          $ref: "../components/schemas/requestBodies/ItemPurchaseQuantityRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

@@ -31,7 +31,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../components/schemas/requests/RefreshTokenRequest.yaml"
+          $ref: "../components/schemas/requestBodies/RefreshTokenRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

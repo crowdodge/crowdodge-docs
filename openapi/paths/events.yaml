@@ -34,7 +34,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../components/schemas/requests/EventRequest.yaml"
+          $ref: "../components/schemas/requestBodies/EventRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"

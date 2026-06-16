@@ -25,7 +25,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: "../components/schemas/requests/CalendarIdsRequest.yaml"
+          $ref: "../components/schemas/requestBodies/CalendarIdsRequest.yaml"
   responses:
     "400":
       $ref: "../components/responses/errors/400.yaml"
