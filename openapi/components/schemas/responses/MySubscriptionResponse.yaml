@@ -1,12 +1,12 @@
 type: object
 required:
-  - planId
+  - planType
   - status
   - startAt
   - expiresAt
 properties:
-  planId:
-    $ref: "../properties/PlanId.yaml"
+  planType:
+    $ref: "../properties/PlanType.yaml"
   status:
     description: 契約状態
     type: string

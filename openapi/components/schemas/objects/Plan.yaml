@@ -9,14 +9,7 @@ required:
   - features
 properties:
   planType:
-    description: プランの種別
-    type: string
-    enum:
-      - "Free"
-      - "Premium"
-    examples:
-      - "Free"
-      - "Premium"
+    $ref: "../properties/PlanType.yaml"
   name:
     description: プラン名
     type: string

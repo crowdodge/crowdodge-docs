@@ -1,5 +1,0 @@
-type: string
-description: サブスクリプションプランID
-examples:
-  - "Free"
-  - "Premium"

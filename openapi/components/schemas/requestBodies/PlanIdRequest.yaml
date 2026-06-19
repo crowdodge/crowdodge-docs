@@ -1,6 +1,6 @@
 type: object
 required:
-  - planId
+  - planType
 properties:
-  planId:
-    $ref: "../properties/PlanId.yaml"
+  planType:
+    $ref: "../properties/PlanType.yaml"
