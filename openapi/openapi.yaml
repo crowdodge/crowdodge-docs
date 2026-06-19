@@ -56,7 +56,7 @@ paths:
   # users
   /users/me/calendars: # GET 一覧取得（選択中かどうかはそれぞれのflag管理） # PUT 選択を変更
     $ref: "./paths/users@me@calendars.yaml"
-  /users/me/subscription: # GET 契約中のサブスク # PUT 変更・更新（body: {planId: "xxx"で付与}）
+  /users/me/subscription: # GET 契約中のサブスク # PUT 変更・更新（body: {planType: "xxx"で付与}）
     $ref: "./paths/users@me@subscription.yaml"
   /users/me/items: # GET 所持アイテム一覧
     $ref: "./paths/users@me@items.yaml"
