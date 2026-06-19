@@ -7,6 +7,8 @@ get:
     それぞれのカレンダー要素が、id, 名前, 選択中かどうかのフラグを持つ。
   operationId: listCalendars
   responses:
+    "200":
+      $ref: "../components/responses/ListCalendars.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "500":
@@ -27,6 +29,8 @@ put:
         schema:
           $ref: "../components/schemas/requestBodies/CalendarIdsRequest.yaml"
   responses:
+    "204":
+      $ref: "../components/responses/UpdateSelectedCalendars.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":

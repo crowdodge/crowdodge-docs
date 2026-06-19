@@ -14,6 +14,8 @@ put:
         schema:
           $ref: "../components/schemas/requestBodies/EventRequest.yaml"
   responses:
+    "200":
+      $ref: "../components/responses/UpdateEvent.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":
@@ -37,6 +39,8 @@ delete:
   parameters:
     - $ref: "../components/parameters/paths/EventId.yaml"
   responses:
+    "204":
+      $ref: "../components/responses/DeleteEvent.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "404":

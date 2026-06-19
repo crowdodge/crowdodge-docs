@@ -1,0 +1,5 @@
+description: アイテムの所持数
+type: integer
+minimum: 0
+examples:
+  - 3

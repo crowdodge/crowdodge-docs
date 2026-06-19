@@ -8,6 +8,8 @@ post:
   parameters:
     - $ref: "../components/parameters/paths/ItemId.yaml"
   responses:
+    "200":
+      $ref: "../components/responses/UseItems.yaml" # TODO: 不明
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "404":

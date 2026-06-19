@@ -1,0 +1,57 @@
+description: |
+  おすすめお店情報
+
+  ただし、現状送客システム等は空のため、UI側に合わせてるだけ。
+type: object
+required:
+  - name
+  - avgStars
+  - reviewCount
+  - priceRange
+  - address
+properties:
+  name:
+    description: 店名
+    type: string
+    examples:
+      - "店名"
+  avgStars:
+    description: |
+      5点満点の平均評価
+      フロント側で少数第一位で表示
+    type: number
+    minimum: 0.0
+    maximum: 5.0
+    examples:
+      - 4.45
+  reviewCount:
+    description: レビュー件数
+    type: integer
+    minimum: 0
+    examples:
+      - 15
+  priceRange:
+    description: 値段帯
+    type: object
+    required:
+      - min
+      - max
+    properties:
+      min:
+        type: integer
+        examples:
+          - 1000
+      max:
+        type: integer
+        examples:
+          - 2000
+  address:
+    description: 住所
+    type: string
+    examples:
+      - "中津1丁目14-6"
+  comment:
+    description: コメント
+    type: string
+    examples:
+      - コメント

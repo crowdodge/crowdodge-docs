@@ -9,6 +9,8 @@ post:
     そのため、クライアント側での破棄を前提とする。
   operationId: signout
   responses:
+    "204":
+      $ref: "../components/responses/Signout.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "500":

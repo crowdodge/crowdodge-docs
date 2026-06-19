@@ -1,0 +1,24 @@
+type: object
+required:
+  - planId
+  - status
+  - startAt
+  - expiresAt
+properties:
+  planId:
+    $ref: "../properties/PlanId.yaml"
+  status:
+    description: 契約状態
+    type: string
+    enum:
+      - active
+      - canceled
+      - past_due
+  startAt:
+    description: 契約開始日時
+    type: string
+    format: date-time
+  expiresAt: # 買い切りプランがあるならnull許容に
+    description: 契約終了予定日時
+    type: string
+    format: date-time

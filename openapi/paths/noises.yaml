@@ -6,6 +6,8 @@ get:
     ノイズの一覧を取得する。
   operationId: listNoises
   responses:
+    "200":
+      $ref: "../components/responses/ListNoises.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "500":

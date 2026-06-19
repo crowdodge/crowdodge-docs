@@ -6,6 +6,8 @@ get:
     ユーザが所持しているアイテム一覧を取得する。
   operationId: listUserItems
   responses:
+    "200":
+      $ref: "../components/responses/ListUserItems.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "500":

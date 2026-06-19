@@ -1,0 +1,35 @@
+description: ノイズ一覧
+type: array
+items:
+  type: object
+  required:
+    - noiseId
+    - eventId
+    - description
+    - detectedAt
+  properties:
+    noiseId:
+      description: ノイズID
+      type: string
+      format: uuid
+      examples:
+        - "b2cd9135-7dc7-40bd-a2d8-2687632919ab"
+    eventId:
+      description: |
+        ノイズが発生したイベントID
+        内部ドメインであるイベントから発生するため、GoogleEventIdではない。
+      type: string
+      format: uuid
+      examples:
+        - "a0de010b-5fbe-4a63-b5b8-d4771c5d8c69"
+    description:
+      description: ノイズの内容
+      type: string
+      examples:
+        - "予定が遂行されなかったため、行動履歴・混雑情報としての信憑性が低いと判断されました。"
+    detectedAt:
+      description: ノイズの検出日時
+      type: string
+      format: date-time
+      examples:
+        - "2026-06-19T20:25:45+09:00"

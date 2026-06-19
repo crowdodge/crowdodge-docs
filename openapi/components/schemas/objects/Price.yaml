@@ -1,0 +1,18 @@
+description: 料金情報
+type: object
+required:
+  - amount
+  - currency
+properties:
+  amount:
+    description: 金額
+    type: integer
+    minimum: 0
+    examples:
+      - 0 # 無料
+      - 980
+  currency:
+    description: 通貨コード（ISO 4217）
+    type: string
+    examples:
+      - "JPY"

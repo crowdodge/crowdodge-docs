@@ -1,0 +1,6 @@
+description: アイテムの種別
+type: string
+enum:
+  - "NoiseRemove"
+examples:
+  - "NoiseRemove"

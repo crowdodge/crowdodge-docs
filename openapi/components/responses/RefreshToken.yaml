@@ -1,0 +1,5 @@
+description: "トークン再発行"
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/TokenResponse.yaml"

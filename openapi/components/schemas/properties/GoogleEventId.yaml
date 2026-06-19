@@ -1,0 +1,4 @@
+description: 付加情報を紐づける対象の、Googleカレンダー上のイベントのID
+type: string
+examples:
+  - "id"

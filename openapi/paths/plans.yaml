@@ -7,5 +7,7 @@ get:
   operationId: listPlans
   security: []
   responses:
+    "200":
+      $ref: "../components/responses/ListPlans.yaml"
     "500":
       $ref: "../components/responses/errors/500.yaml"

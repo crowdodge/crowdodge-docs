@@ -1,0 +1,17 @@
+description: 混雑情報とおすすめお店情報、および紐付け情報
+type: object
+required:
+  - eventMappings
+  - eventCongestions
+properties:
+  eventMappings:
+    description: Google Calendar EventとCrowdodge側の付加情報の紐付けの一覧
+    type: array
+    items:
+      $ref: "../objects/EventMapping.yaml"
+
+  eventCongestions:
+    description: 予定に対する混雑情報と、混雑情報に対するおすすめ店舗の一覧
+    type: array
+    items:
+      $ref: "../objects/EventCongestion.yaml"

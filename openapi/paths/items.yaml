@@ -7,5 +7,7 @@ get:
   operationId: listItems
   security: []
   responses:
+    "200":
+      $ref: "../components/responses/ListItems.yaml"
     "500":
       $ref: "../components/responses/errors/500.yaml"

@@ -3,9 +3,11 @@ get:
     - Users
   summary: "契約中のサブスクリプション取得"
   description: |
-    ユーザが現在契約しているサブスクリプションプランの除法を取得する。
+    ユーザが現在契約しているサブスクリプションプランの情報を取得する。
   operationId: getSubscription
   responses:
+    "200":
+      $ref: "../components/responses/GetSubscription.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "500":
@@ -26,6 +28,8 @@ put:
         schema:
           $ref: "../components/schemas/requestBodies/PlanIdRequest.yaml"
   responses:
+    "200":
+      $ref: "../components/responses/GetSubscription.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":

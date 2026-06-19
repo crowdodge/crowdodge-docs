@@ -33,6 +33,8 @@ post:
         schema:
           $ref: "../components/schemas/requestBodies/RefreshTokenRequest.yaml"
   responses:
+    "200":
+      $ref: "../components/responses/RefreshToken.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":

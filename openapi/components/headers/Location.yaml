@@ -1,0 +1,5 @@
+description: リダイレクト先URL
+required: true
+schema:
+  type: string
+  format: url

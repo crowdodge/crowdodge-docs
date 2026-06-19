@@ -16,6 +16,8 @@ get:
   operationId: handleGoogleOAuthCallback
   security: []
   responses:
+    "200":
+      $ref: "../components/responses/RefreshToken.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "422":

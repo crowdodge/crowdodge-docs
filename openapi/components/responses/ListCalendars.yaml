@@ -1,0 +1,5 @@
+description: "カレンダー一覧を取得"
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/CalendarsResponse.yaml"

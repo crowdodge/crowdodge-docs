@@ -1,0 +1,28 @@
+description: アイテム購入結果
+type: object
+required:
+  - itemType
+  - quantity
+  - totalOwned
+  - purchasedAt
+properties:
+  itemType:
+    $ref: "../objects/ItemType.yaml"
+  quantity:
+    description: 今回購入した個数
+    type: integer
+    minimum: 1
+    examples:
+      - 3
+  totalOwned:
+    description: 購入後の所持数の合計
+    type: integer
+    minimum: 1 # 購入と同時に利用（利用時に足りないからチャージみたいな）する場合は0
+    examples:
+      - 4
+  purchasedAt:
+    description: 購入日時
+    type: string
+    format: date-time
+    examples:
+      - "2026-06-19T17:26:33+09:00"

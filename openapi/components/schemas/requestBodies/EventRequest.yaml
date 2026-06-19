@@ -27,7 +27,7 @@ properties:
       - "2026-06-15T13:20:00+09:00"
   endAt:
     type: string
-    format: data-time
+    format: date-time
     description: 終了日時
     examples:
       - "2026-06-15T15:00:00+09:00"

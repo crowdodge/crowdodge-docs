@@ -3,17 +3,17 @@ get:
     - Events
   summary: "イベント差分取得"
   description: |
-    3種類のデータとしてカレンダーのイベントを取得する。
+    混雑情報とそれに対するおすすめ情報、および実際の予定（google calendar event）に対する紐付け情報を取得する。
 
-    1. 以下のGoogleカレンダーの前回からの差分データ（リクエストした日付から、サーバが持ってる分全て取る）
-    2. 混雑情報（リクエストした日付から、サーバが持ってる分全て取る）
-    3. おすすめお店情報（リクエストした日付から、サーバが持ってる分全て取る）
+    データの範囲は、リクエストした日付から未来にかけて、サーバが持ってる分全て取る。
 
     クエパラ`calendarId`にコンマ区切りでカレンダーIDを指定することで、対象カレンダーを絞り込める。
-  operationId: listEvents
+  operationId: listEventCongestions
   parameters:
     - $ref: "../components/parameters/queries/CalendarId.yaml"
   responses:
+    "200":
+      $ref: "../components/responses/ListEventCongestions.yaml" # 説明にある通りのデータは、リストじゃないかも。これ名前よくないかもなぁ。
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":
@@ -36,6 +36,8 @@ post:
         schema:
           $ref: "../components/schemas/requestBodies/EventRequest.yaml"
   responses:
+    "201":
+      $ref: "../components/responses/CreateEvent.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":
