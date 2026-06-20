@@ -1,4 +1,14 @@
+description: |
+  カレンダーIDを指定する。
+
+  複数の場合はコンマ区切りで、全指定の場合は省略。
 name: calendarId
 in: query
+required: false
+style: form
+explode: false
 schema:
-  type: string
+  type: array
+  items:
+    type: string
+    format: uuid
