@@ -64,7 +64,7 @@ paths:
     $ref: "./paths/users@me@items@{itemId}@uses.yaml"
 
   # events
-  /events: # GET 三種の差分取得、クエリパラメータ（?calenderId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
+  /events: # GET 三種の差分取得、クエリパラメータ（?calendarId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
     $ref: "./paths/events.yaml"
   /events/{eventId}: # PUT # DELETE
     $ref: "./paths/events@{eventId}.yaml"
