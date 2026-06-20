@@ -86,10 +86,8 @@ paths:
   # noises
   /noises: # GET 一覧
     $ref: "./paths/noises.yaml"
-  /noises/{noiseId}/disputes: # POST 異議申し立て
-    $ref: "./paths/noises@{noiseId}@disputes.yaml"
-  /noises/{noiseId}/disputes/{disputeId}: # GET 申し立て確認 # DELETE 申し立て取り下げ
-    $ref: "./paths/noises@{noiseId}@disputes@{disputeId}.yaml"
+  /noises/{noiseId}/dispute: # GET 申し立て確認 # POST 異議申し立て # DELETE 申し立て取り下げ
+    $ref: "./paths/noises@{noiseId}@dispute.yaml"
 
 # TODO: 仮
 components:

@@ -1,0 +1,5 @@
+description: "ノイズの申し立て確認"
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/Dispute.yaml"
