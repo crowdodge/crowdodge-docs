@@ -1,4 +1,6 @@
-description: 混雑情報とおすすめお店情報、および紐付け情報
+description: |
+  イベント取得。
+  混雑情報とおすすめお店情報の一覧、およびgoogleカレンダーイベントとの紐付け情報。
 type: object
 required:
   - eventMappings
