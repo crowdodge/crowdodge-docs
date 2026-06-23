@@ -1,0 +1,65 @@
+get:
+  tags:
+    - Noises
+  summary: "異議申し立ての確認"
+  description: |
+    指定したノイズに対して行った異議申し立ての確認を行う。
+  operationId: getDispute
+  parameters:
+    - $ref: "../components/parameters/paths/NoiseId.yaml"
+  responses:
+    "200": # TODO: 中身未確定
+      $ref: "../components/responses/GetDispute.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
+
+post:
+  tags:
+    - Noises
+  summary: "異議申し立て"
+  description: |
+    指定したノイズに対して異議申し立てを行う。
+    TODO: 行動履歴の形式によるところがあるので詳細不明。
+    TODO: 行動履歴の一部情報を修正するためのテキストか？
+  operationId: submitActivityCorrection
+  parameters:
+    - $ref: "../components/parameters/paths/NoiseId.yaml"
+  # TODO: requestBody:
+  responses:
+    "201": # TODO: 中身未確定
+      $ref: "../components/responses/SubmitActivityCorrection.yaml"
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
+
+delete:
+  tags:
+    - Noises
+  summary: "異議申し立ての取り下げ"
+  description: |
+    指定したノイズに対して行った異議申し立てを取り下げる。
+  operationId: deleteDispute
+  parameters:
+    - $ref: "../components/parameters/paths/NoiseId.yaml"
+  responses:
+    "204":
+      $ref: "../components/responses/DeleteDispute.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

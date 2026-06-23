@@ -1,0 +1,8 @@
+extends:
+  - recommended
+
+apis:
+  main:
+    root: ./openapi/openapi.yaml
+    rules:
+      operation-4xx-response: off

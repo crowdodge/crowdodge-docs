@@ -1,0 +1,14 @@
+# Forbidden
+description: 認証済みだが権限なし
+content:
+  application/problem+json:
+    schema:
+      $ref: "../../schemas/ProblemDetail.yaml"
+    examples:
+      forbidden:
+        summary: 権限なし
+        value:
+          type: "https://docs.crowdodge.com/api#error-FORBIDDEN"
+          title: "Forbidden"
+          status: 403
+          code: "FORBIDDEN"

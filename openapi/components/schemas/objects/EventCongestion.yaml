@@ -1,0 +1,11 @@
+description: 混雑情報とおすすめお店情報、および紐付け情報
+type: object
+required:
+  - eventId
+  - eventCongestionDetails
+properties:
+  eventId:
+    $ref: "../properties/EventId.yaml"
+  eventCongestionDetails:
+    description: 混雑情報の詳細
+    $ref: "./EventCongestionDetails.yaml"

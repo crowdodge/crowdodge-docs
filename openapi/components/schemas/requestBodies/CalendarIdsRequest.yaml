@@ -1,0 +1,6 @@
+type: object
+required:
+  - calendarIds
+properties:
+  calendarIds:
+    $ref: "../properties/CalendarIds.yaml"

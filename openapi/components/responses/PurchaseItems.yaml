@@ -1,0 +1,5 @@
+description: 指定したアイテム購入
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/PurchaseItem.yaml"

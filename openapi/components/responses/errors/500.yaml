@@ -1,0 +1,14 @@
+# InternalServerError
+description: サーバ内部エラー
+content:
+  application/problem+json:
+    schema:
+      $ref: "../../schemas/ProblemDetail.yaml"
+    examples:
+      internalServerError:
+        summary: サーバエラー
+        value:
+          type: "https://docs.crowdodge.com/api#error-INTERNAL_SERVER_ERROR"
+          title: "Internal Server Error"
+          status: 500
+          code: "INTERNAL_SERVER_ERROR"

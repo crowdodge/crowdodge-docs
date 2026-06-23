@@ -1,0 +1,14 @@
+get:
+  tags:
+    - Noises
+  summary: "ノイズ一覧取得"
+  description: |
+    ノイズの一覧を取得する。
+  operationId: listNoises
+  responses:
+    "200":
+      $ref: "../components/responses/ListNoises.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

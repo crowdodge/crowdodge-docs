@@ -1,0 +1,32 @@
+description: "カレンダー一覧"
+type: array
+items:
+  type: object
+  required:
+    - id
+    - name
+    - selected
+  properties:
+    id:
+      description: カレンダーID
+      type: string
+      examples:
+        - "id"
+    name:
+      description: カレンダー名
+      type: string
+      examples:
+        - "カレンダー1"
+    selected:
+      description: 洗濯中かどうかのフラグ
+      type: boolean
+      examples:
+        - true
+
+examples:
+  - - id: "id"
+      name: "カレンダー名"
+      selected: true
+    - id: "id"
+      name: "カレンダー名"
+      selected: false

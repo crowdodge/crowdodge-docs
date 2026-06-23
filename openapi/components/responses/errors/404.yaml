@@ -1,0 +1,14 @@
+# Not Found
+description: 指定されたリソースが存在しない
+content:
+  application/problem+json:
+    schema:
+      $ref: "../../schemas/ProblemDetail.yaml"
+    examples:
+      notFound:
+        summary: リソースが見つからない
+        value:
+          type: "https://docs.crowdodge.com/api#error-NOT_FOUND"
+          title: "Not Found"
+          status: 404
+          code: "NOT_FOUND"

@@ -1,0 +1,6 @@
+type: object
+required:
+  - planType
+properties:
+  planType:
+    $ref: "../properties/PlanType.yaml"

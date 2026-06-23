@@ -1,0 +1,5 @@
+description: "イベントの作成"
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/EventResult.yaml"

@@ -1,0 +1,13 @@
+get:
+  tags:
+    - Plans
+  summary: "サブスクリプション一覧取得"
+  description: |
+    利用可能なサブスクリプションプランの一覧を取得する。
+  operationId: listPlans
+  security: []
+  responses:
+    "200":
+      $ref: "../components/responses/ListPlans.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

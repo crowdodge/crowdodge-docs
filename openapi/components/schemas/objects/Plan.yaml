@@ -1,0 +1,48 @@
+description: サブスクリプションプラン
+type: object
+required:
+  - planType
+  - name
+  - description
+  - price
+  - durationDays
+  - features
+properties:
+  planType:
+    $ref: "../properties/PlanType.yaml"
+  name:
+    description: プラン名
+    type: string
+    examples:
+      - "無料プラン"
+      - "有料プラン"
+  description:
+    description: プランの簡単な説明
+    type: string
+    examples:
+      - "基本的な機能が使えるプランです。"
+      - "より快適な機能を提供するプランです。"
+  price:
+    $ref: "../objects/Price.yaml"
+  durationDays:
+    description: |
+      プランの有効期限（日数）
+      無料プランはnull。
+    oneOf:
+      - type: integer
+      - type: "null"
+    examples:
+      - 30
+      - null
+  features:
+    description: プランの機能いちらん
+    type: array
+    items:
+      description: |
+        プランの機能
+        TODO: サーバ側での保存・定義が未定だが、表示側はそれぞれの行で表示したいはず。
+        TODO: 仮に`\n`区切りのtextで保存している場合は分解して、行ごとに保存しているならそれを。
+      type: string
+      examples:
+        - "複数カレンダー選択可能"
+        - "予定作成、編集、削除"

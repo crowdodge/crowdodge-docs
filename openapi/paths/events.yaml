@@ -1,0 +1,48 @@
+get:
+  tags:
+    - Events
+  summary: "イベント差分取得"
+  description: |
+    混雑情報とそれに対するおすすめ情報、および実際の予定（google calendar event）に対する紐付け情報を取得する。
+
+    データの範囲は、リクエストした日付から未来にかけて、サーバが持ってる分全て取る。
+
+    クエパラ`calendarId`にコンマ区切りでカレンダーIDを指定することで、対象カレンダーを絞り込める。
+  operationId: listEventCongestions
+  parameters:
+    - $ref: "../components/parameters/queries/CalendarId.yaml"
+  responses:
+    "200":
+      $ref: "../components/responses/ListEventCongestions.yaml" # 説明にある通りのデータは、リストじゃないかも。これ名前よくないかもなぁ。
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
+
+post:
+  tags:
+    - Events
+  summary: "イベント新規作成"
+  description: |
+    新しいイベントを作成する。
+    不足部分はサーバサイドで補ってGoogleカレンダーに反映する。
+  operationId: createEvent
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requestBodies/EventRequest.yaml"
+  responses:
+    "201":
+      $ref: "../components/responses/CreateEvent.yaml"
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # 時刻の前後不整合など
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

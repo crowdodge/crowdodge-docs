@@ -1,0 +1,49 @@
+put:
+  tags:
+    - Events
+  summary: "イベント更新"
+  description: |
+    指定したイベントの内容を更新する。
+  operationId: updateEvent
+  parameters:
+    - $ref: "../components/parameters/paths/EventId.yaml"
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requestBodies/EventRequest.yaml"
+  responses:
+    "200":
+      $ref: "../components/responses/UpdateEvent.yaml"
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "409":
+      $ref: "../components/responses/errors/409.yaml"
+    "422":
+      $ref: "../components/responses/errors/422.yaml" # 時刻の前後不整合など
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
+
+delete:
+  tags:
+    - Events
+  summary: "イベント削除"
+  description: |
+    指定したイベントを削除する。
+  operationId: deleteEvent
+  parameters:
+    - $ref: "../components/parameters/paths/EventId.yaml"
+  responses:
+    "204":
+      $ref: "../components/responses/DeleteEvent.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

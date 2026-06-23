@@ -1,0 +1,6 @@
+type: object
+required:
+  - quantity
+properties:
+  quantity:
+    $ref: "../properties//ItemPurchaseQuantity.yaml"

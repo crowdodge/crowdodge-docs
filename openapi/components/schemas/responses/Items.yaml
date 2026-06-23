@@ -1,0 +1,24 @@
+description: アイテム一覧
+type: array
+items:
+  type: object
+  required:
+    - itemType
+    - name
+    - description
+    - price
+  properties:
+    itemType:
+      $ref: "../objects/ItemType.yaml"
+    name: # 名前や説明はクライアントが話がtypeに対して行うか、変更や言語を一元管理したいならサーバ側で。
+      description: アイテム名
+      type: string
+      examples:
+        - "おそうじアイテム"
+    description:
+      description: アイテムの説明
+      type: string
+      examples:
+        - "ノイズデータを除去するアイテム"
+    price:
+      $ref: "../objects/Price.yaml"

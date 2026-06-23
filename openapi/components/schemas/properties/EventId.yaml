@@ -1,0 +1,5 @@
+description: Crowdodge側で管理するイベントID
+type: string
+format: uuid
+examples:
+  - "a0de010b-5fbe-4a63-b5b8-d4771c5d8c69"
