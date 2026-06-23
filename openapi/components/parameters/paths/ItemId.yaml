@@ -1,0 +1,5 @@
+name: itemId
+in: path
+schema:
+  type: "string"
+required: true

@@ -1,0 +1,101 @@
+openapi: 3.1.1
+info:
+  title: "Crowdodge API"
+  version: 1.0.0
+  description: CrowdodgeのAPI
+  license:
+    name: UNLICENSED
+    url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-json#license"
+
+servers:
+  - url: "http://api.crowdodge.com/v1"
+    description: Production # NOTE: 将来用であり、今はダミー。リンターを黙らせるのに必要。
+  - url: "{protocol}://{host}:{port}"
+    description: Local development # TODO: モックサーバは後で。
+    variables:
+      protocol:
+        description: プロトコル
+        default: http
+        enum:
+          - "http"
+          - "https"
+      host:
+        description: 各自のホスト名
+        default: "localhost"
+      port:
+        description: 各自のポート番号
+        default: "8080"
+
+tags:
+  - name: Auth
+    description: 認証・認可に関するエンドポイント群
+  - name: Users
+    description: ユーザ情報に関する操作エンドポイント群
+  - name: Events
+    description: イベントに関する操作エンドポイント群
+  - name: Activities
+    description: 行動履歴に関する操作エンドポイント群
+  - name: Plans
+    description: サブスクリプションプランに関する操作エンドポイント群
+  - name: Items
+    description: 課金アイテムに関する操作エンドポイント群
+  - name: Noises
+    description: ノイズデータに関する操作エンドポイント群
+
+paths:
+  # auth
+  /auth/google:
+    $ref: "./paths/auth@google@.yaml"
+  /auth/google/callback:
+    $ref: "./paths/auth@google@callback.yaml"
+  /auth/signout:
+    $ref: "./paths/auth@signout.yaml"
+  /auth/refresh/mobile:
+    $ref: "./paths/auth@refresh@mobile.yaml"
+
+  # users
+  /users/me/calendars: # GET 一覧取得（選択中かどうかはそれぞれのflag管理） # PUT 選択を変更
+    $ref: "./paths/users@me@calendars.yaml"
+  /users/me/subscription: # GET 契約中のサブスク # PUT 変更・更新（body: {planType: "xxx"で付与}）
+    $ref: "./paths/users@me@subscription.yaml"
+  /users/me/items: # GET 所持アイテム一覧
+    $ref: "./paths/users@me@items.yaml"
+  /users/me/items/{itemId}/uses: # POST 利用
+    $ref: "./paths/users@me@items@{itemId}@uses.yaml"
+
+  # events
+  /events: # GET 三種の差分取得、クエリパラメータ（?calendarId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
+    $ref: "./paths/events.yaml"
+  /events/{eventId}: # PUT # DELETE
+    $ref: "./paths/events@{eventId}.yaml"
+
+  # activities
+  /activities: # GET # POST
+    $ref: "./paths/activities.yaml"
+
+  # subscription plans
+  /plans: # GET プラン一覧
+    $ref: "./paths/plans.yaml"
+
+  # items
+  /items: # GET 購入可能な課金アイテム一覧
+    $ref: "./paths/items.yaml"
+  /items/{itemId}/purchases: # POST 購入（body: {quantity: nで個数指定}）
+    $ref: "./paths/items@{itemId}@purchases.yaml"
+
+  # noises
+  /noises: # GET 一覧
+    $ref: "./paths/noises.yaml"
+  /noises/{noiseId}/dispute: # GET 申し立て確認 # POST 異議申し立て # DELETE 申し立て取り下げ
+    $ref: "./paths/noises@{noiseId}@dispute.yaml"
+
+# TODO: 仮
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []

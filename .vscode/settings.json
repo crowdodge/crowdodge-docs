@@ -1,0 +1,15 @@
+{
+    "yaml.trace.server": "verbose",
+    "yaml.schemas": {
+        "./.vscode/schemas/openapi-3.1-2025-09-15-schema.json": "openapi/openapi.yaml",
+        "./.vscode/schemas/paths.json": "openapi/paths/**/*.yaml",
+        "./.vscode/schemas/params.json": [
+            "openapi/components/parameters/*.yaml",
+            "openapi/components/parameters/**/*.yaml",
+        ],
+        "./.vscode/schemas/schemas-object.json": "openapi/components/schemas/**/*.yaml",
+        "./.vscode/schemas/reses.json": "openapi/components/responses/**/*.yaml",
+        "./.vscode/schemas/reqs.json": "openapi/components/requestBodies/**/*.yaml",
+        "./.vscode/schemas/headers.json": "openapi/components/headers/**/*.yaml"
+    }
+}

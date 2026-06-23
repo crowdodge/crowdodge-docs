@@ -1,0 +1,5 @@
+description: "契約中のサブスクリプション状態取得"
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/MySubscriptionResponse.yaml"

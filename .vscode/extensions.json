@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "redhat.vscode-yaml",
+        "redocly.openapi-vs-code"
+    ],
+    "unwantedRecommendations": [
+        "42crunch.vscode-openapi"
+    ]
+}

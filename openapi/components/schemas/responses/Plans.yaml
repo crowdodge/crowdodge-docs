@@ -1,0 +1,4 @@
+description: "プラン一覧"
+type: array
+items:
+  $ref: "../../schemas/objects/Plan.yaml"

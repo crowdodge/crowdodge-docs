@@ -1,0 +1,9 @@
+description: |
+  アイテム利用。
+
+  TODO: どう削除できたか、という結果を返す必要がある気がするが、ノイズの形式が未確定のためとりあえずobject。
+  もし不要なら204に変更した方が良い。
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/ItemUsedResponse.yaml"

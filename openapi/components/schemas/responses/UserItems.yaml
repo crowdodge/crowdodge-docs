@@ -1,0 +1,21 @@
+description: |
+  ユーザが利用可能なアイテム一覧。
+  今後アイテムの種類が増える可能性を考慮して、配列。
+
+  ただし、現状一種類しかないためリストの長さは1固定。
+type: array
+items:
+  type: object
+  required:
+    - itemType
+  properties:
+    itemType:
+      description: アイテムの種類
+      type: string
+      enum:
+        - cleaner
+    quantity:
+      $ref: "../properties/ItemQuantity.yaml"
+examples:
+  - - itemType: "cleaner"
+      quantity: 3

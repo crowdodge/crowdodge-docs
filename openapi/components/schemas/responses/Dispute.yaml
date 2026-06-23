@@ -1,0 +1,3 @@
+description: "ノイズへの異議申し立ての情報"
+type: object
+# TODO: submittedAtは必須、他は未決定

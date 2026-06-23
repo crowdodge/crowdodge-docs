@@ -1,0 +1,10 @@
+description: Google Calendar EventとCrowdodge側の付加情報の紐付け
+type: object
+required:
+  - googleEventId
+  - eventId
+properties:
+  googleEventId:
+    $ref: "../properties/GoogleEventId.yaml"
+  eventId:
+    $ref: "../properties/EventId.yaml"

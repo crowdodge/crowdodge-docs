@@ -1,0 +1,17 @@
+description: 終日やイレギュラーなど、時間帯に依存しない混雑情報
+type: object
+required:
+  - description
+  - stores
+properties:
+  description:
+    description: 混雑理由や内容、注意点などの説明
+    type: string
+    examples:
+      - "終日最寄駅周辺で祭りが開催されているため混雑が見込まれます。"
+  stores:
+    description: おすすめ店舗3つほど
+    type: array
+    items:
+      $ref: "./Store.yaml"
+    maxItems: 3

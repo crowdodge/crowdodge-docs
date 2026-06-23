@@ -1,0 +1,31 @@
+get:
+  tags:
+    - Activities
+  summary: "行動履歴取得"
+  description: |
+    行動履歴を取得する。
+  operationId: getActivity
+  responses:
+    # TODO: 取得時の形式
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"
+
+post:
+  tags:
+    - Activities
+  summary: "行動遍歴送信"
+  description: |
+    予定遂行後に、その行動を送信する。
+  operationId: createActivity
+  # TODO: requestBody:
+  responses:
+    "204":
+      $ref: "../components/responses/CreateActivity.yaml"
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "500":
+      $ref: "../components/responses/errors/500.yaml"

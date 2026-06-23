@@ -1,0 +1,7 @@
+description: |
+  サブスクプランの一覧。
+  デフォルトである無料プランも含む。
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/Plans.yaml"

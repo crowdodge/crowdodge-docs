@@ -1,0 +1,5 @@
+description: アイテム一覧
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/Items.yaml"

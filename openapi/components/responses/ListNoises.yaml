@@ -1,0 +1,5 @@
+description: ノイズ情報一覧
+content:
+  application/json:
+    schema:
+      $ref: "../schemas/responses/Noises.yaml"

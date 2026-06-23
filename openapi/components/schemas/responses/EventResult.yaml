@@ -1,0 +1,45 @@
+allOf:
+  - $ref: "../requestBodies/EventRequest.yaml"
+  - description: EventRequest.yamlに対して追加の要素
+    type: object
+    required:
+      - eventId
+      - googleEventId
+      - tagColor # EventRequest側のプロパティを必須に上書き
+      - createdAt
+      - updatedAt
+      - status
+      - htmlLink
+    properties:
+      eventId:
+        $ref: "../properties/EventId.yaml"
+      googleEventId:
+        $ref: "../properties/GoogleEventId.yaml"
+      createdAt:
+        description: Crowdodge側での作成日時
+        type: string
+        format: date-time
+        examples:
+          - "2026-06-19T11:30:01+09:00"
+      updatedAt:
+        description: Crowdodge側での作成日時
+        type: string
+        format: date-time
+        examples:
+          - "2026-06-19T11:30:01+09:00"
+          - "2026-06-19T11:50:20+09:00"
+      status:
+        description: イベントのステータス
+        type: string
+        enum:
+          - confirmed
+          - tentative
+          - cancelled
+        examples:
+          - "cancelled"
+      htmlLink:
+        description: "GoogleカレンダーのイベントページURL"
+        type: string
+        format: uri
+        examples:
+          - "https://calendar.google.com/calendar/,,,"
