@@ -1,0 +1,29 @@
+services:
+  mock:
+    image: stoplight/prism:5
+    platform: linux/amd64
+    command:
+      [
+        "mock",
+        "-h",
+        "0.0.0.0",
+        "--multiprocess=false",
+        "/dist/openapi.bundled.yaml",
+      ]
+    volumes:
+      - "dist:/dist:ro"
+    ports:
+      - "${MOCK_PORT:-4010}:4010"
+
+  docs:
+    image: nginx:1.31.2-alpine3.23-slim
+    volumes:
+      - "dist:/usr/share/nginx/html/spec:ro"
+      - "./docs/index.html:/usr/share/nginx/html/index.html:ro" # scalar
+      - "./docs/default.conf:/etc/nginx/conf.d/default.conf:ro"
+    ports:
+      - "${DOCS_PORT:-80}:80"
+
+volumes:
+  dist:
+    name: crowdodge-docs_dist

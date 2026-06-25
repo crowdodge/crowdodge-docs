@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  GREETING: Hello, world!
+
+tasks:
+  default:
+    desc: "Show available tasks."
+    cmds:
+      - task --list
+    silent: true
+
+  # OpenAPI関連
+
+  # lint
+  openapi:lint:
+    desc: "Lint OpenAPI spec."
+    cmds:
+      - docker compose -f "./compose/compose.bundler.yaml" run --rm bundler lint openapi/openapi.yaml
+
+  # バンドル
+  openapi:bundle:
+    desc: "Bundle OpenAPI spec."
+    cmds:
+      - docker compose -f "./compose/compose.bundler.yaml" run --rm bundler
+
+  # モックサーバ&リクエスト機能つきドキュメントサーバ起動（事前に`task openapi:bundle`が必要）
+  openapi:srv:up:
+    desc: "Start Mock&Docs svs. Requires prior `task openapi:bundle`."
+    cmds:
+      - docker compose -f "./compose/compose.services.yaml" up -d
+
+  # モックサーバ&リクエスト機能つきドキュメントサーバのコンテナを削除
+  openapi:srv:down:
+    desc: "Stop Mock&Docs srvs containers."
+    cmds:
+      - docker compose -f "./compose/compose.services.yaml" down --remove-orphans --timeout 15
+
+  # バンドル+モックサーバ&リクエスト機能つきドキュメントサーバ起動
+  openapi:up:
+    desc: "Bundle OpenAPI spec and up Mock&Docs svs."
+    cmds:
+      - docker compose -f "./compose/compose.bundler.yaml" -f "./compose/compose.services.yaml" -f "./compose/compose.yaml" up -d
+      - docker compose -f "./compose/compose.bundler.yaml" rm -f bundler
+
+  # リセット
+  openapi:reset:
+    desc: "Reset dist volume and restart all srvs."
+    cmds:
+      - task: openapi:rm-volumes
+      - task: openapi:up
+
+  # 全停止
+  openapi:down:
+    desc: "Stop and remove Mock&Docs srvs containers."
+    cmds:
+      - docker compose -f "./compose/compose.bundler.yaml" -f "./compose/compose.services.yaml" -f "./compose/compose.yaml" down --remove-orphans --timeout 15
+
+  # ボリューム削除
+  openapi:rm-volumes:
+    desc: "Remove all volumes.（keep image）"
+    prompt: "This will delete all volumes. Continue?"
+    cmds:
+      - docker compose -f "./compose/compose.bundler.yaml" -f "./compose/compose.services.yaml" -f "./compose/compose.yaml" down -v --remove-orphans --timeout 15
+
+  # bundlerの成果物であるdistボリュームの単体削除
+  openapi:rm-dist:
+    desc: "Remove bundler-dist volume. Reinstalls extensions on next start."
+    cmds:
+      - docker compose -f "./compose/compose.bundler.yaml" -f "./compose/compose.services.yaml" -f "./compose/compose.yaml" down
+      - docker volume rm crowdodge-docs_dist
