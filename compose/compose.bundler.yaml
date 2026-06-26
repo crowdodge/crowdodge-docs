@@ -1,0 +1,14 @@
+services:
+  bundler:
+    image: redocly/cli:2.34.0
+    working_dir: /spec
+    command:
+      ["bundle", "./openapi/openapi.yaml", "-o", "/dist/openapi.bundled.yaml"]
+    volumes:
+      - "../openapi/:/spec/openapi:ro"
+      - "../redocly.yaml:/spec/redocly.yaml:ro"
+      - dist:/dist
+
+volumes:
+  dist:
+    name: crowdodge-docs_dist

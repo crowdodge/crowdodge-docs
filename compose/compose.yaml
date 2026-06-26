@@ -1,0 +1,9 @@
+services:
+  mock:
+    depends_on:
+      bundler:
+        condition: service_completed_successfully
+  docs:
+    depends_on:
+      bundler:
+        condition: service_completed_successfully

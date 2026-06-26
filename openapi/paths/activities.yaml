@@ -6,7 +6,7 @@ get:
     行動履歴を取得する。
   operationId: getActivity
   responses:
-    # TODO: 取得時の形式
+    # TODO: 取得時の形式が未定
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "500":
