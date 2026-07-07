@@ -15,9 +15,6 @@ properties:
     type:
       - string
       - "null"
-  instance:
-    type: string
-    format: uri-reference
   code:
     type: string
   violations:
