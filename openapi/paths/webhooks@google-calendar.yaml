@@ -32,7 +32,7 @@ post:
       in: header
       required: false
       description: |
-        watch 登録時に設定した token の照合に使用する。不一致の通知は拒否する。
+        watch 登録時に設定した token の照合に使用する。不一致または未知の channel の通知は処理せず 204 を返す（黙って無視する）。
       schema:
         type: string
     - name: X-Goog-Resource-ID
@@ -54,7 +54,7 @@ post:
       description: 通知を受理した
     "400":
       description: |
-        不正な通知（必須ヘッダの欠落、または token 不一致）。レスポンスボディは返さない。
+        必須ヘッダ（X-Goog-Channel-ID / X-Goog-Resource-State）が欠落している。レスポンスボディは返さない。
     "502":
       description: |
         通知の処理に失敗した。レスポンスボディは返さない。

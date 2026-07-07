@@ -7,4 +7,3 @@ properties:
   code:
     type: string
     description: エラー理由を機械判定するためのコード。
-additionalProperties: false

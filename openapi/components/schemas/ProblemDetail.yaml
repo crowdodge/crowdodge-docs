@@ -21,4 +21,3 @@ properties:
     type: array
     items:
       $ref: "./objects/Violation.yaml"
-additionalProperties: false
