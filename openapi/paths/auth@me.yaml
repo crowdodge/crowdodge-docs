@@ -1,0 +1,13 @@
+get:
+  tags: [Auth]
+  operationId: getCurrentUser
+  summary: 現在のユーザーを取得する
+  responses:
+    "200":
+      description: 現在のユーザー
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses/CurrentUserResponse.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"

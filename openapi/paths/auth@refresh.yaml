@@ -1,7 +1,7 @@
 post:
   tags: [Auth]
-  operationId: signOut
-  summary: リフレッシュトークンを失効する
+  operationId: refreshToken
+  summary: リフレッシュトークンでトークンを再発行する
   security: []
   requestBody:
     required: true
@@ -16,8 +16,12 @@ post:
               minLength: 1
           additionalProperties: false
   responses:
-    "204":
-      description: サインアウト成功
+    "200":
+      description: 再発行成功
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses/TokenResponse.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":

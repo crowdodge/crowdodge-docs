@@ -1,0 +1,87 @@
+parameters:
+  - name: calendarId
+    in: path
+    required: true
+    schema:
+      type: string
+      minLength: 1
+
+get:
+  tags:
+    - Calendars
+  summary: "Google カレンダーのイベント一覧取得"
+  description: |
+    Google Calendar API のイベント一覧レスポンスを透過的に返す。
+  operationId: listGoogleCalendarEvents
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "502":
+      $ref: "../components/responses/errors/502.yaml"
+    "504":
+      $ref: "../components/responses/errors/504.yaml"
+    default:
+      description: |
+        上記以外のエラー。Google Calendar API のエラーは同じステータスコードの
+        Problem Details に変換して透過する（例: レート制限時は 429）。
+      content:
+        application/problem+json:
+          schema:
+            $ref: "../components/schemas/ProblemDetail.yaml"
+
+post:
+  tags:
+    - Calendars
+  summary: "Google カレンダーのイベント作成"
+  description: |
+    Google Calendar API へイベント作成を透過し、作成結果を返す。
+    リクエストボディが上限を超えた場合は 413 を返す。
+  operationId: createGoogleCalendarEvent
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: true
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "502":
+      $ref: "../components/responses/errors/502.yaml"
+    "504":
+      $ref: "../components/responses/errors/504.yaml"
+    default:
+      description: |
+        上記以外のエラー。Google Calendar API のエラーは同じステータスコードの
+        Problem Details に変換して透過する（例: レート制限時は 429）。
+      content:
+        application/problem+json:
+          schema:
+            $ref: "../components/schemas/ProblemDetail.yaml"

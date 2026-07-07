@@ -1,48 +1,24 @@
 get:
-  tags:
-    - Events
-  summary: "イベント差分取得"
+  tags: [Events]
+  operationId: listEventEnrichments
+  summary: 同期済みGoogleイベントに対応するCrowdodge付加情報を取得する
   description: |
-    混雑情報とそれに対するおすすめ情報、および実際の予定（google calendar event）に対する紐付け情報を取得する。
-
-    データの範囲は、リクエストした日付から未来にかけて、サーバが持ってる分全て取る。
-
-    クエパラ`calendarId`にコンマ区切りでカレンダーIDを指定することで、対象カレンダーを絞り込める。
-  operationId: listEventCongestions
+    サーバーが同期済みのGoogleイベントについて、
+    Googleイベントを識別するIDとCrowdodge側のID・付加情報だけを返す。
+    対象期間はサーバーの同期範囲に従い、この契約では期間を規定しない。
+    Googleイベント本体は返さない。
+    calendarIdを省略した場合は選択中の全カレンダーを対象とする。
+    指定した場合は指定された選択中カレンダーだけを対象とする。
   parameters:
     - $ref: "../components/parameters/queries/CalendarId.yaml"
   responses:
     "200":
-      $ref: "../components/responses/ListEventCongestions.yaml" # 説明にある通りのデータは、リストじゃないかも。これ名前よくないかもなぁ。
+      description: カレンダー別の付加情報
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses/EventsResponse.yaml"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
-    "500":
-      $ref: "../components/responses/errors/500.yaml"
-
-post:
-  tags:
-    - Events
-  summary: "イベント新規作成"
-  description: |
-    新しいイベントを作成する。
-    不足部分はサーバサイドで補ってGoogleカレンダーに反映する。
-  operationId: createEvent
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          $ref: "../components/schemas/requestBodies/EventRequest.yaml"
-  responses:
-    "201":
-      $ref: "../components/responses/CreateEvent.yaml"
-    "400":
-      $ref: "../components/responses/errors/400.yaml"
-    "401":
-      $ref: "../components/responses/errors/401.yaml"
-    "422":
-      $ref: "../components/responses/errors/422.yaml" # 時刻の前後不整合など
-    "500":
-      $ref: "../components/responses/errors/500.yaml"

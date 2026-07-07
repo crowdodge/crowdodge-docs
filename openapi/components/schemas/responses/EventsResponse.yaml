@@ -1,0 +1,8 @@
+type: object
+required: [calendars]
+properties:
+  calendars:
+    type: array
+    items:
+      $ref: "../objects/CalendarEvents.yaml"
+additionalProperties: false

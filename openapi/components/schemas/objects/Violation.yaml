@@ -1,0 +1,9 @@
+type: object
+required: [field, code]
+properties:
+  field:
+    type: string
+    description: バリデーションエラーが発生した項目名。
+  code:
+    type: string
+    description: エラー理由を機械判定するためのコード。

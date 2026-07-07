@@ -8,23 +8,10 @@ info:
     url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-json#license"
 
 servers:
-  - url: "http://api.crowdodge.com/v1"
-    description: Production # NOTE: 将来用であり、今はダミー。リンターを黙らせるのに必要。
-  - url: "{protocol}://{host}:{port}"
-    description: Local development # TODO: モックサーバは後で。
-    variables:
-      protocol:
-        description: プロトコル
-        default: http
-        enum:
-          - "http"
-          - "https"
-      host:
-        description: 各自のホスト名
-        default: "localhost"
-      port:
-        description: 各自のポート番号
-        default: "8080"
+  - url: "https://api.crowdodge.grfsv.net/v1"
+    description: Production
+  - url: "http://localhost:8080/v1"
+    description: Local development
 
 tags:
   - name: Auth
@@ -41,33 +28,40 @@ tags:
     description: 課金アイテムに関する操作エンドポイント群
   - name: Noises
     description: ノイズデータに関する操作エンドポイント群
+  - name: Calendars
+    description: Google Calendar proxyエンドポイント群
+  - name: System
+    description: ヘルスチェックおよび外部システム連携
 
 paths:
-  # auth
   /auth/google:
     $ref: "./paths/auth@google@.yaml"
-  /auth/google/callback:
-    $ref: "./paths/auth@google@callback.yaml"
+  /auth/refresh:
+    $ref: "./paths/auth@refresh.yaml"
   /auth/signout:
     $ref: "./paths/auth@signout.yaml"
-  /auth/refresh/mobile:
-    $ref: "./paths/auth@refresh@mobile.yaml"
-
-  # users
-  /users/me/calendars: # GET 一覧取得（選択中かどうかはそれぞれのflag管理） # PUT 選択を変更
+  /auth/me:
+    $ref: "./paths/auth@me.yaml"
+  /users/me/calendars:
     $ref: "./paths/users@me@calendars.yaml"
+  /calendars/{calendarId}/events:
+    $ref: "./paths/calendars@{calendarId}@events.yaml"
+  /calendars/{calendarId}/events/{googleEventId}:
+    $ref: "./paths/calendars@{calendarId}@events@{googleEventId}.yaml"
+  /events:
+    $ref: "./paths/events.yaml"
+  /health:
+    $ref: "./paths/health.yaml"
+  /ready:
+    $ref: "./paths/ready.yaml"
+  /webhooks/google-calendar:
+    $ref: "./paths/webhooks@google-calendar.yaml"
   /users/me/subscription: # GET 契約中のサブスク # PUT 変更・更新（body: {planType: "xxx"で付与}）
     $ref: "./paths/users@me@subscription.yaml"
   /users/me/items: # GET 所持アイテム一覧
     $ref: "./paths/users@me@items.yaml"
   /users/me/items/{itemId}/uses: # POST 利用
     $ref: "./paths/users@me@items@{itemId}@uses.yaml"
-
-  # events
-  /events: # GET 三種の差分取得、クエリパラメータ（?calendarId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
-    $ref: "./paths/events.yaml"
-  /events/{eventId}: # PUT # DELETE
-    $ref: "./paths/events@{eventId}.yaml"
 
   # activities
   /activities: # GET # POST

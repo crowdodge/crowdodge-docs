@@ -1,28 +1,5 @@
-# Unauthorized
-description: 未認証（トークンなし）・認証失敗（不正・期限切れ）
+description: Unauthorized
 content:
   application/problem+json:
     schema:
       $ref: "../../schemas/ProblemDetail.yaml"
-    examples:
-      missingToken:
-        summary: トークンなし
-        value:
-          type: "https://docs.crowdodge.com/api#error-MISSING_TOKEN"
-          title: "Unauthorized"
-          status: 401
-          code: "MISSING_TOKEN"
-      expiredToken:
-        summary: 不正なトークン
-        value:
-          type: "https://docs.crowdodge.com/api#error-EXPIRED_TOKEN"
-          title: "Unauthorized"
-          status: 401
-          code: "EXPIRED_TOKEN"
-      invalidToken:
-        summary: 期限切れトークン
-        value:
-          type: "https://docs.crowdodge.com/api#error-INVALID_TOKEN"
-          title: "Unauthorized"
-          status: 401
-          code: "INVALID_TOKEN"

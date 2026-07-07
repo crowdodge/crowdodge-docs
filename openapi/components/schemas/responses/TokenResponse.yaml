@@ -1,9 +1,15 @@
 type: object
-required:
-  - accessToken
-  - refreshToken
+required: [accessToken, refreshToken, tokenType, expiresIn]
 properties:
   accessToken:
-    $ref: "../properties/AccessToken.yaml"
+    type: string
   refreshToken:
-    $ref: "../properties/RefreshToken.yaml"
+    type: string
+  tokenType:
+    type: string
+    const: Bearer
+  expiresIn:
+    type: integer
+    format: int64
+    minimum: 1
+additionalProperties: false

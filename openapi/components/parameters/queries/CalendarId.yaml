@@ -1,14 +1,12 @@
-description: |
-  カレンダーIDを指定する。
-
-  複数の場合はコンマ区切りで、全指定の場合は省略。
 name: calendarId
 in: query
 required: false
+description: 対象カレンダーID。省略時はユーザーが選択中の全カレンダーを対象とする。
 style: form
 explode: false
 schema:
   type: array
+  uniqueItems: true
   items:
     type: string
-    format: uuid
+    minLength: 1

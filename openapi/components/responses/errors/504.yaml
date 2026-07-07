@@ -1,4 +1,4 @@
-description: Forbidden
+description: Gateway Timeout
 content:
   application/problem+json:
     schema:

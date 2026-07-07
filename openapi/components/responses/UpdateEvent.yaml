@@ -1,5 +1,0 @@
-description: "イベントの更新"
-content:
-  application/json:
-    schema:
-      $ref: "../schemas/responses/EventResult.yaml"

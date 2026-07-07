@@ -1,14 +1,5 @@
-# Unprocessable Entity
-description: リクエストの形式は正しいが、ビジネスロジック上処理不可
+description: Unprocessable Entity
 content:
   application/problem+json:
     schema:
       $ref: "../../schemas/ProblemDetail.yaml"
-    examples:
-      unprocessableEntity:
-        summary: ビジネスルール違反
-        value:
-          type: "https://docs.crowdodge.com/api#error-UNPROCESSABLE_ENTITY"
-          title: "Unprocessable Entity"
-          status: 422
-          code: "UNPROCESSABLE_ENTITY"

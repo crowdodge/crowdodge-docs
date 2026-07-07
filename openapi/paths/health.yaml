@@ -1,0 +1,31 @@
+servers:
+  - url: "https://api.crowdodge.grfsv.net"
+    description: Production system endpoint
+  - url: "http://localhost:8080"
+    description: Local system endpoint
+
+get:
+  tags:
+    - System
+  summary: "ヘルスチェック（liveness）"
+  description: |
+    プロセスが稼働中かどうかを返す。認証不要。
+  operationId: getHealth
+  security: []
+  responses:
+    "200":
+      description: プロセスは稼働中
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - status
+              - service
+            properties:
+              status:
+                type: string
+                const: UP
+              service:
+                type: string
+                const: crowdodge-backend

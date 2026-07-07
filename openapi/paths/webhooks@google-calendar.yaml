@@ -1,0 +1,60 @@
+servers:
+  - url: "https://api.crowdodge.grfsv.net"
+    description: Production system endpoint
+  - url: "http://localhost:8080"
+    description: Local system endpoint
+
+post:
+  tags:
+    - System
+  summary: "Google Calendar 変更通知の受信"
+  description: |
+    Google Calendar の push 通知（watch チャネル）を受信するエンドポイント。
+    Google から送信されるヘッダを検証し、通知を受理する。認証不要。
+  operationId: receiveGoogleCalendarWebhook
+  security: []
+  parameters:
+    - name: X-Goog-Channel-ID
+      in: header
+      required: true
+      description: |
+        watch 登録時に払い出したチャネル ID。欠落している通知は 400 で拒否する。
+      schema:
+        type: string
+    - name: X-Goog-Resource-State
+      in: header
+      required: true
+      description: |
+        リソースの状態（sync / exists / not_exists 等）。欠落している通知は 400 で拒否する。
+      schema:
+        type: string
+    - name: X-Goog-Channel-Token
+      in: header
+      required: false
+      description: |
+        watch 登録時に設定した token の照合に使用する。不一致または未知の channel の通知は処理せず 204 を返す（黙って無視する）。
+      schema:
+        type: string
+    - name: X-Goog-Resource-ID
+      in: header
+      required: false
+      description: |
+        変更されたリソースの識別子。Google が常に送るが、サーバーは使用しない。
+      schema:
+        type: string
+    - name: X-Goog-Message-Number
+      in: header
+      required: false
+      description: |
+        チャネルごとに増加するメッセージ番号。Google が常に送るが、サーバーは使用しない。
+      schema:
+        type: string
+  responses:
+    "204":
+      description: 通知を受理した
+    "400":
+      description: |
+        必須ヘッダ（X-Goog-Channel-ID / X-Goog-Resource-State）が欠落している。レスポンスボディは返さない。
+    "502":
+      description: |
+        通知の処理に失敗した。レスポンスボディは返さない。

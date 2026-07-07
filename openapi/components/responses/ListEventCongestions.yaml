@@ -1,5 +1,0 @@
-description: 混雑情報とおすすめ店舗情報の取得
-content:
-  application/json:
-    schema:
-      $ref: "../schemas/responses/EventCongestions.yaml"
