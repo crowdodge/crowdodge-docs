@@ -1,4 +1,0 @@
-type: string
-description: リフレッシュトークン
-examples:
-  - "tok_xxxxx..." # Opaque token
