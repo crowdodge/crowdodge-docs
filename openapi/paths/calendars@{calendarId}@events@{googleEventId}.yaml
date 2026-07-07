@@ -1,0 +1,99 @@
+parameters:
+  - name: calendarId
+    in: path
+    required: true
+    schema:
+      type: string
+      minLength: 1
+  - name: googleEventId
+    in: path
+    required: true
+    schema:
+      type: string
+      minLength: 1
+
+get:
+  tags:
+    - Calendars
+  summary: "Google カレンダーのイベント取得"
+  description: |
+    Google Calendar API の単一イベントレスポンスを透過的に返す。
+  operationId: getGoogleCalendarEvent
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "502":
+      $ref: "../components/responses/errors/502.yaml"
+    "504":
+      $ref: "../components/responses/errors/504.yaml"
+
+patch:
+  tags:
+    - Calendars
+  summary: "Google カレンダーのイベント更新"
+  description: |
+    Google Calendar API へイベント更新を透過し、更新結果を返す。
+  operationId: updateGoogleCalendarEvent
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties: true
+  responses:
+    "200":
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "502":
+      $ref: "../components/responses/errors/502.yaml"
+    "504":
+      $ref: "../components/responses/errors/504.yaml"
+
+delete:
+  tags:
+    - Calendars
+  summary: "Google カレンダーのイベント削除"
+  description: |
+    Google Calendar API へイベント削除を透過する。
+  operationId: deleteGoogleCalendarEvent
+  responses:
+    "204":
+      description: No Content
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml"
+    "404":
+      $ref: "../components/responses/errors/404.yaml"
+    "502":
+      $ref: "../components/responses/errors/502.yaml"
+    "504":
+      $ref: "../components/responses/errors/504.yaml"
