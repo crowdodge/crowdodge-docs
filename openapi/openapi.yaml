@@ -66,8 +66,6 @@ paths:
   # events
   /events: # GET 三種の差分取得、クエリパラメータ（?calendarId=xxx,xxx,,,）で制御可能 # POST 予定新規作成
     $ref: "./paths/events.yaml"
-  /events/{eventId}: # PUT # DELETE
-    $ref: "./paths/events@{eventId}.yaml"
 
   # activities
   /activities: # GET # POST

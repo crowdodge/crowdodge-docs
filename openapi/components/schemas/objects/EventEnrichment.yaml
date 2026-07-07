@@ -1,0 +1,14 @@
+type: object
+required: [googleEventId, eventId, congestion]
+properties:
+  googleEventId:
+    type: string
+  eventId:
+    type: string
+    format: uuid
+  congestion:
+    oneOf:
+      - $ref: "./EventCongestionDetails.yaml"
+      - type: "null"
+    description: 該当する混雑情報がない場合はnull。
+additionalProperties: false
