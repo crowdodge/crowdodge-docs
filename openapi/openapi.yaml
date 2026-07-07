@@ -41,6 +41,10 @@ tags:
     description: 課金アイテムに関する操作エンドポイント群
   - name: Noises
     description: ノイズデータに関する操作エンドポイント群
+  - name: Calendars
+    description: Google Calendar proxyエンドポイント群
+  - name: System
+    description: ヘルスチェックおよび外部システム連携
 
 paths:
   # auth

@@ -1,0 +1,39 @@
+servers:
+  - url: "https://api.crowdodge.grfsv.net"
+    description: Production system endpoint
+  - url: "http://localhost:8080"
+    description: Local system endpoint
+
+get:
+  tags:
+    - System
+  summary: "レディネスチェック（readiness）"
+  description: |
+    リクエストを受け付ける準備が整っているかどうかを返す。認証不要。
+  operationId: getReadiness
+  security: []
+  responses:
+    "200":
+      description: リクエストを受け付ける準備が整っている
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - status
+            properties:
+              status:
+                type: string
+                const: READY
+    "503":
+      description: リクエストを受け付ける準備が整っていない
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - status
+            properties:
+              status:
+                type: string
+                const: NOT_READY
