@@ -1,21 +1,5 @@
-# Bad Request
-description: リクエストの形式不備やバリデーションエラー。
+description: Bad Request
 content:
   application/problem+json:
     schema:
       $ref: "../../schemas/ProblemDetail.yaml"
-    examples:
-      failedValidation:
-        summary: バリデーションエラー
-        value:
-          type: "https://docs.crowdodge.com/api#error-FAILED_VALIDATION"
-          title: "Bad Request"
-          status: 400
-          code: "FAILED_VALIDATION"
-      invalidFormat:
-        summary: フォーマット不正
-        value:
-          type: "https://docs.crowdodge.com/api#error-INVALID_FORMAT"
-          title: "Bad Request"
-          status: 400
-          code: "INVALID_FORMAT"

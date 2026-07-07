@@ -1,14 +1,5 @@
-# Conflict
-description: リソースの状態が競合している
+description: Conflict
 content:
   application/problem+json:
     schema:
       $ref: "../../schemas/ProblemDetail.yaml"
-    examples:
-      conflict:
-        summary: 重複登録
-        value:
-          type: "https://docs.crowdodge.com/api#error-CONFLICT"
-          title: "Conflict"
-          status: 409
-          code: "CONFLICT"

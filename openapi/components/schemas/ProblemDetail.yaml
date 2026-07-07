@@ -1,40 +1,27 @@
 type: object
-description: |
-  [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457)準拠のエラーレスポンス。
-required:
-  - type
-  - title
-  - status
-  - code
+required: [type, title, status, code]
 properties:
   type:
     type: string
     format: uri
-    description: |
-      エラーの種別を示すURI。
-      format: https://docs.crowdodge.com/api#error-{code}
-    examples:
-      - "https://docs.crowdodge.com/api#error-EVENT-NOT-FOUND"
+    pattern: "^https://crowdodge\\.grfsv\\.net/problems/[A-Z0-9_]+$"
   title:
     type: string
-    description: エラー種別の短い人間可読な説明。
-    examples:
-      - "Not Found"
   status:
     type: integer
-    description: HTTPステータスコード。
-    examples:
-      - 404
+    minimum: 400
+    maximum: 599
+  detail:
+    type:
+      - string
+      - "null"
+  instance:
+    type: string
+    format: uri-reference
   code:
     type: string
-    description: |
-      機械的なハンドリング用のエラーコード。
-      フロントエンドはこのフィールドで分岐する。
-      大文字スネークケース。
-    examples:
-      - "EVENT_NOT_FOUND"
-  detail:
-    type: string
-    description: このリクエスト固有の人間可読なエラー詳細。
-    examples:
-      - "Event with id 'abc' was not found."
+  violations:
+    type: array
+    items:
+      $ref: "./objects/Violation.yaml"
+additionalProperties: false
