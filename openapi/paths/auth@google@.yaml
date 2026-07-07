@@ -1,21 +1,28 @@
-get:
-  tags:
-    - Auth
-  summary: "Google OAuth認証フロー"
-  description: |
-    Google OAuth認証フローを開始する。
-    クライアントがこのエンドポイントにアクセスすると、
-    GoogleのOAuth認証画面へのリダイレクト（302）を返す。
-    実際の登録とトークン発行は`/auth/google/callback`で行われる。
-
-    このエンドポイントの成功処理がリダイレクトのため、不要な2xx responseは意図的に設定していない。
-  operationId: startGoogleOAuth
+post:
+  tags: [Auth]
+  operationId: authenticateWithGoogle
+  summary: Google認可コードでログインする
   security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requestBodies/GoogleLoginRequest.yaml"
   responses:
-    "302":
-      description: GoogleのOAuth認証画面リダイレクト
-      headers:
-        Location:
-          $ref: "../components/headers/Location.yaml"
-    "500":
-      $ref: "../components/responses/errors/500.yaml"
+    "200":
+      description: 認証成功
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses/TokenResponse.yaml"
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml"
+    "502":
+      $ref: "../components/responses/errors/502.yaml"
+    "504":
+      $ref: "../components/responses/errors/504.yaml"

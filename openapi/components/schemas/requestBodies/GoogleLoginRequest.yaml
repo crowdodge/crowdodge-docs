@@ -1,0 +1,15 @@
+type: object
+required: [authorizationCode]
+properties:
+  authorizationCode:
+    type: string
+    minLength: 1
+  redirectUri:
+    type:
+      - string
+      - "null"
+  codeVerifier:
+    type:
+      - string
+      - "null"
+additionalProperties: false

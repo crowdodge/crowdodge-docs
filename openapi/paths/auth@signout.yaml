@@ -1,17 +1,24 @@
 post:
-  tags:
-    - Auth
-  summary: "サインアウト"
-  description: |
-    リクエストに含まれるリフレッシュトークンをDBで無効化する。
-
-    ただし、アクセストークン（JWT）はstatelessのため即時無効化はできず、有効期限まで残る。
-    そのため、クライアント側での破棄を前提とする。
-  operationId: signout
+  tags: [Auth]
+  operationId: signOut
+  summary: リフレッシュトークンを失効する
+  security: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required: [refreshToken]
+          properties:
+            refreshToken:
+              type: string
+              minLength: 1
+          additionalProperties: false
   responses:
     "204":
-      $ref: "../components/responses/Signout.yaml"
+      description: サインアウト成功
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
-    "500":
-      $ref: "../components/responses/errors/500.yaml"
