@@ -22,5 +22,3 @@ get:
       $ref: "../components/responses/errors/400.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
-    "500":
-      $ref: "../components/responses/errors/500.yaml"
