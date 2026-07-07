@@ -54,27 +54,7 @@ post:
       description: 通知を受理した
     "400":
       description: |
-        不正な通知（必須ヘッダの欠落、または token 不一致）。
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - status
-            properties:
-              status:
-                type: string
-                const: INVALID_NOTIFICATION
+        不正な通知（必須ヘッダの欠落、または token 不一致）。レスポンスボディは返さない。
     "502":
       description: |
-        通知の処理に失敗した。
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - status
-            properties:
-              status:
-                type: string
-                const: PROCESSING_FAILED
+        通知の処理に失敗した。レスポンスボディは返さない。
