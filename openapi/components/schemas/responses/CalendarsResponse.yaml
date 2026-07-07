@@ -1,32 +1,26 @@
-description: "カレンダー一覧"
-type: array
-items:
-  type: object
-  required:
-    - id
-    - name
-    - selected
-  properties:
-    id:
-      description: カレンダーID
-      type: string
-      examples:
-        - "id"
-    name:
-      description: カレンダー名
-      type: string
-      examples:
-        - "カレンダー1"
-    selected:
-      description: 洗濯中かどうかのフラグ
-      type: boolean
-      examples:
-        - true
-
-examples:
-  - - id: "id"
-      name: "カレンダー名"
-      selected: true
-    - id: "id"
-      name: "カレンダー名"
-      selected: false
+type: object
+required: [calendars]
+properties:
+  calendars:
+    type: array
+    items:
+      type: object
+      required: [id, name, color, primary, accessRole, selected]
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        color:
+          type:
+            - string
+            - "null"
+        primary:
+          type: boolean
+        accessRole:
+          type: string
+          enum: [owner, writer, reader]
+        selected:
+          type: boolean
+      additionalProperties: false
+additionalProperties: false

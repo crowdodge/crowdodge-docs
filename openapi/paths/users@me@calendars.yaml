@@ -8,11 +8,19 @@ get:
   operationId: listCalendars
   responses:
     "200":
-      $ref: "../components/responses/ListCalendars.yaml"
+      description: "カレンダー一覧"
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses/CalendarsResponse.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
-    "500":
-      $ref: "../components/responses/errors/500.yaml"
+    "403":
+      $ref: "../components/responses/errors/403.yaml" # Google Calendar の権限不足
+    "502":
+      $ref: "../components/responses/errors/502.yaml" # Google 連携失敗
+    "504":
+      $ref: "../components/responses/errors/504.yaml" # Google 連携失敗
 
 put:
   tags:
@@ -30,14 +38,14 @@ put:
           $ref: "../components/schemas/requestBodies/CalendarIdsRequest.yaml"
   responses:
     "204":
-      $ref: "../components/responses/UpdateSelectedCalendars.yaml"
+      description: "選択状態を更新した"
     "400":
       $ref: "../components/responses/errors/400.yaml"
     "401":
       $ref: "../components/responses/errors/401.yaml"
     "403":
-      $ref: "../components/responses/errors/403.yaml" # フリープランはカレンダー選択1つまで
-    "422":
-      $ref: "../components/responses/errors/422.yaml" # 不正なカレンダーなど
-    "500":
-      $ref: "../components/responses/errors/500.yaml"
+      $ref: "../components/responses/errors/403.yaml" # Google Calendar の権限不足
+    "502":
+      $ref: "../components/responses/errors/502.yaml" # Google 連携失敗
+    "504":
+      $ref: "../components/responses/errors/504.yaml" # Google 連携失敗
