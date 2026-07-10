@@ -1,0 +1,8 @@
+type: object
+required: [fcmToken]
+properties:
+  fcmToken:
+    type: string
+    minLength: 1
+    pattern: '.*\S.*'
+    description: "Firebase Cloud Messaging registration token. Leading and trailing whitespace is removed."

@@ -1,0 +1,21 @@
+post:
+  tags:
+    - Users
+  summary: "通知デバイス登録"
+  description: |
+    現在のユーザーの FCM 通知トークンを登録する。
+    同じトークンが別ユーザーに登録済みの場合は、現在のユーザーへ付け替える。
+  operationId: registerDevice
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../components/schemas/requestBodies/RegisterDeviceRequest.yaml"
+  responses:
+    "204":
+      description: "通知デバイスを登録した"
+    "400":
+      $ref: "../components/responses/errors/400.yaml"
+    "401":
+      $ref: "../components/responses/errors/401.yaml"
