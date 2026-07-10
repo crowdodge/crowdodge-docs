@@ -42,6 +42,8 @@ paths:
     $ref: "./paths/auth@signout.yaml"
   /auth/me:
     $ref: "./paths/auth@me.yaml"
+  /devices:
+    $ref: "./paths/devices.yaml"
   /users/me/calendars:
     $ref: "./paths/users@me@calendars.yaml"
   /calendars/{calendarId}/events:
