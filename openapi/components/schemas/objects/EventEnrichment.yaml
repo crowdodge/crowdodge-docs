@@ -1,14 +1,23 @@
 type: object
-required: [googleEventId, eventId, congestion]
+required: [googleEventId, eventId, destination, congestions]
 properties:
   googleEventId:
     type: string
   eventId:
     type: string
     format: uuid
-  congestion:
+  destination:
     oneOf:
-      - $ref: "./EventCongestionDetails.yaml"
+      - $ref: "./EventDestination.yaml"
       - type: "null"
-    description: 該当する混雑情報がない場合はnull。
+    description: 推定した予定の目的地。目的地が未推定の場合はnull。
+  congestions:
+    type: array
+    items:
+      $ref: "./PeriodCongestion.yaml"
+    description: |
+      予定に影響する時間帯別の混雑予測。該当する混雑情報がない場合は空配列。
+      月間カレンダーでは配列が空でない場合に混雑アイコンを表示し、
+      congestionStartTimeの昇順で返し、同じ場合はcongestionEndTimeの昇順で返す。
+      destinationがnullの場合、congestionsは必ず空配列となる。
 additionalProperties: false

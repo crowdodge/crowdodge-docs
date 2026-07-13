@@ -3,8 +3,10 @@ required: [calendarId, events]
 properties:
   calendarId:
     type: string
+    description: Google Calendar API上の外部カレンダーID。
   events:
     type: array
+    description: 同期済みイベント。対象イベントがない場合は空配列。
     items:
       $ref: "./EventEnrichment.yaml"
 additionalProperties: false
