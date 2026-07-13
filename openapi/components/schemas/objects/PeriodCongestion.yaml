@@ -1,8 +1,9 @@
-description: ある時間帯における混雑情報
+description: ある時間帯・場所における混雑予測
 type: object
 required:
   - congestionStartTime
   - congestionEndTime
+  - area
   - description
   - stores
 properties:
@@ -18,6 +19,12 @@ properties:
     format: date-time
     examples:
       - "2026-06-18T00:30:00+09:00"
+  area:
+    description: 混雑が予測される駅、道路、施設周辺などの場所
+    type: string
+    minLength: 1
+    examples:
+      - "〇〇駅からコンサート会場までの道路"
   description:
     description: 混雑理由や内容、注意点などの説明
     type: string
@@ -29,3 +36,4 @@ properties:
     items:
       $ref: "./Store.yaml"
     maxItems: 3
+additionalProperties: false

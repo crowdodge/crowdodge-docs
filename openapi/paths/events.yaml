@@ -9,6 +9,10 @@ get:
     Googleイベント本体は返さない。
     calendarIdを省略した場合は選択中の全カレンダーを対象とする。
     指定した場合は指定された選択中カレンダーだけを対象とする。
+    calendarIdはGoogle Calendar API上の外部カレンダーIDで、複数指定できる。
+    指定値に存在しないカレンダーまたはユーザーが選択していないカレンダーが
+    1件でも含まれる場合、リクエスト全体を400とする。
+    対象カレンダーに同期済みイベントがない場合も、そのカレンダーをevents: []で返す。
   parameters:
     - $ref: "../components/parameters/queries/CalendarId.yaml"
   responses:

@@ -1,7 +1,10 @@
 name: calendarId
 in: query
 required: false
-description: 対象カレンダーID。省略時はユーザーが選択中の全カレンダーを対象とする。
+description: |
+  Google Calendar API上の外部カレンダーID。
+  複数指定でき、省略時はユーザーが選択中の全カレンダーを対象とする。
+  存在しないIDまたはユーザーが選択していないIDが1件でも含まれる場合は400となる。
 style: form
 explode: false
 schema:
